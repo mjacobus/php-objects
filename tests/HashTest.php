@@ -10,4 +10,9 @@ class HashTest extends PHPUnit_Framework_TestCase
     {
         $this->o = new Hash;
     }
+
+    public function assertHash($object)
+    {
+        $this->assertInstanceOf('Hash', $object);
+    }
 }

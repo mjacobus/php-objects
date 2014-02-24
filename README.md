@@ -9,6 +9,9 @@ hell out off ruby objects.
 
 Well, not anymore. Hopefully.
 
+- See [Hash](docs/Hash.md)
+
+
 ## Authors
 
 - [Marcelo Jacobus](https://github.com/mjacobus)
