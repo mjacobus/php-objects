@@ -27,4 +27,10 @@ class HashAccessTest extends HashTest
         $this->assertEquals($params, $values);
     }
 
+    public function testItCanGetDefaultValues()
+    {
+        $this->assertNull($this->o['foo']);
+        $this->assertEquals('bar', $this->o->offsetGet('foo', 'bar'));
+    }
+
 }

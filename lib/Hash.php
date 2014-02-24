@@ -15,7 +15,7 @@ class Hash implements ArrayAccess, Iterator
      */
     public function offsetGet($key, $default = null)
     {
-        return isset($this->_values[$key]) ? $this->_values[$key] : null;
+        return isset($this->_values[$key]) ? $this->_values[$key] : $default;
     }
 
     /**
