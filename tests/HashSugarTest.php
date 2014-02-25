@@ -92,4 +92,29 @@ class HashSugarTest extends HashTest
         $this->assertEquals($expectation, $mapped->toArray());
     }
 
+    /**
+     * @covers Hash::each()
+     */
+    public function testItIterateViaEach()
+    {
+        $hash = new Hash(array('a' => 'b', 'c' => 'd'));
+
+        $array = new Hash;
+
+        $hash->each(function($value, $key) use ($array) {
+            $array[] = $key;
+            $array[] = $value;
+        })->each(function($value, $key) use ($array) {
+            $array[] = $key;
+            $array[] = $value;
+        });
+
+        $expectation = array(
+            'a', 'b', 'c', 'd',
+            'a', 'b', 'c', 'd',
+        );
+
+        $this->assertEquals($expectation, $array->toArray());
+    }
+
 }

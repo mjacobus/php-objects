@@ -176,11 +176,26 @@ class Hash extends Object implements ArrayAccess, Iterator
     {
         $hash = $this->create();
 
-        foreach ($this as $key => $value) {
+        $this->each(function($value, $key) use ($callback, $hash) {
             $hash[] = $callback($value, $key);
-        }
+        });
 
         return $hash;
+    }
+
+    /**
+     * Loop the elements of the Hash
+     *
+     * @param function $callable
+     * @return Hash
+     */
+    public function each($callable)
+    {
+        foreach ($this as $key => $value) {
+            $callable($value, $key);
+        }
+
+        return $this;
     }
 
 }
