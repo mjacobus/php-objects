@@ -9,7 +9,8 @@ hell out off ruby objects.
 
 Well, not anymore. Hopefully.
 
-- See [Hash](docs/Hash.md)
+- [Object](docs/Object.md)
+- [Hash](docs/Hash.md)
 
 
 ## Authors
@@ -25,5 +26,6 @@ Well, not anymore. Hopefully.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-** Do not forget to write tests**
-** Keep the code coverage  **
+**Do not forget to write tests**
+
+**Keep the code coverage**
