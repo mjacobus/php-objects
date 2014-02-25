@@ -166,4 +166,21 @@ class Hash extends Object implements ArrayAccess, Iterator
         return new Hash;
     }
 
+    /**
+     * Maps elements into a new Hash
+     *
+     * @param function $callback
+     * @return Hash
+     */
+    public function map($callback)
+    {
+        $hash = $this->create();
+
+        foreach ($this as $key => $value) {
+            $hash[] = $callback($value, $key);
+        }
+
+        return $hash;
+    }
+
 }

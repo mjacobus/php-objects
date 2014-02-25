@@ -76,4 +76,20 @@ class HashSugarTest extends HashTest
         $this->assertHash($filtered);
     }
 
+    /**
+     * @covers Hash::map()
+     */
+    public function testItCanMapElements()
+    {
+        $hash = new Hash(array('a' => 'b', 'c' => 'd'));
+
+        $mapped = $hash->map(function($value, $key) {
+            return $key . $value;
+        });
+
+        $expectation = array('ab', 'cd');
+
+        $this->assertEquals($expectation, $mapped->toArray());
+    }
+
 }

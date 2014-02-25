@@ -5,7 +5,7 @@ The examplified methods are already ported. The non documented methods must be i
 
 ## Hash (ported or to port methods)
 - clear
-- collect
+- collect - Use map instead.
 - **compact** (not in ruby Hash)
 
 Removes null and empty
@@ -60,6 +60,18 @@ $hash->compact()->toArray(); // array('foo' => 'bar')
 - lazy
 - length
 - map
+
+Maps modified elements into a new hash
+
+```php
+$hash = new Hash(array('a' => 'b', 'c' => 'd'));
+
+$mapped = $hash->map(function($value, $key) {
+    return $key . $value;
+})->toArray();
+
+// array('ab', 'cd');
+```
 - max
 - max_by
 - member?
