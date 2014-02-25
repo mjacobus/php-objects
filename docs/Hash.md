@@ -11,7 +11,6 @@ The examplified methods are already ported. The non documented methods must be i
 Removes null and empty
 
 ```php
-<?php
 $hash = new Hash(array(
   'foo'   => 'bar',
   'null'  => null,
@@ -111,7 +110,6 @@ $filtered = $hash->reject(function($value, $key) {
 New Hash with elements that match the given callback
 
 ```php
-<?php
 $hash = new Hash(array(
   'foo' => 'foobar',
   'bar' => 'barfoo'
