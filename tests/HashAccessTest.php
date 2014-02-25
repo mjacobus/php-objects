@@ -34,4 +34,15 @@ class HashAccessTest extends HashTest
         $this->assertEquals('bar', $this->o->offsetGet('foo', 'bar'));
     }
 
+    public function testIsCanUnsetKey()
+    {
+        $hash = new Hash([ 'a' => 'b', 'b' => 'c' ]);
+
+        $hash->offsetUnset('a');
+        $this->assertEquals(['b' => 'c'], $hash->toArray());
+
+        unset($hash['b']);
+        $this->assertEquals([], $hash->toArray());
+    }
+
 }

@@ -20,6 +20,12 @@ $hash = new Hash(array(
 $hash->compact()->toArray(); // array('foo' => 'bar')
 ```
 - count
+
+Get the number of keys
+
+```php
+Hash::create(['a' => 'b'])->count(); // 1
+```
 - cycle
 - delete
 - delete_if
@@ -36,6 +42,10 @@ $hash->compact()->toArray(); // array('foo' => 'bar')
 - each_with_index
 - each_with_object
 - empty? =isEmpty
+Is empty?
+```php
+Hash::create(['a' => 'b'])->isEmpty(); // false
+```
 - entries
 - fetch
 - find

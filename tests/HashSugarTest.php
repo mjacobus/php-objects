@@ -132,4 +132,37 @@ class HashSugarTest extends HashTest
         $this->assertEquals($params, $created->toArray());
     }
 
+    /**
+     * @covers Hash::isEmpty()
+     */
+    public function testIsEmpty()
+    {
+        $hash = new Hash(array('foo' => 'bar'));
+
+        $this->assertFalse($hash->isEmpty());
+        $this->assertFalse(empty($hash));
+
+        unset($hash['foo']);
+
+        $this->assertTrue($hash->isEmpty());
+        // $this->assertTrue(empty($hash));
+    }
+
+    /**
+     * @covers Hash::count()
+     */
+    public function testCount()
+    {
+        $hash = new Hash(array('foo' => 'bar'));
+
+        $this->assertEquals(1, $hash->count());
+        $this->assertEquals(1, count($hash));
+
+
+        unset($hash['foo']);
+
+        $this->assertEquals(0, $hash->count());
+        $this->assertEquals(0, count($hash));
+    }
+
 }

@@ -3,7 +3,7 @@
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
-class Hash extends Object implements ArrayAccess, Iterator
+class Hash extends Object implements ArrayAccess, Iterator, Countable
 {
 
     /**
@@ -195,6 +195,26 @@ class Hash extends Object implements ArrayAccess, Iterator
         }
 
         return $this;
+    }
+
+    /**
+     * Check if has any element
+     *
+     * @return boolean
+     */
+    public function isEmpty()
+    {
+        return $this->count() === 0;
+    }
+
+    /**
+     * Get the number of elements
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->toArray());
     }
 
 }
