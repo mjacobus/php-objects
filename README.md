@@ -26,3 +26,4 @@ Well, not anymore. Hopefully.
 5. Create new Pull Request
 
 ** Do not forget to write tests**
+** Keep the code coverage  **

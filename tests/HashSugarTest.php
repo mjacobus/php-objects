@@ -23,7 +23,7 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->reject(function ($value, $key) {
+        $filtered = $hash->reject(function($value, $key) {
             return $value === 'barfoo';
         });
 
@@ -38,7 +38,7 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->reject(function ($value, $key) {
+        $filtered = $hash->reject(function($value, $key) {
             return $key === 'bar';
         });
 
@@ -53,7 +53,7 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->select(function ($value, $key) {
+        $filtered = $hash->select(function($value, $key) {
             return $value !== 'barfoo';
         });
 
@@ -68,7 +68,7 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->select(function ($value, $key) {
+        $filtered = $hash->select(function($value, $key) {
             return $key === 'foo';
         });
 
