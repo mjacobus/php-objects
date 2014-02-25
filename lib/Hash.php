@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
+ */
 class Hash extends Object implements ArrayAccess, Iterator
 {
 

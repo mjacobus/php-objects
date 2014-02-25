@@ -13,6 +13,9 @@ Well, not anymore. Hopefully.
 - [Hash](docs/Hash.md)
 
 
+## Lincense
+[MIT](MIT-LICENSE)
+
 ## Authors
 
 - [Marcelo Jacobus](https://github.com/mjacobus)

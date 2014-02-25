@@ -1,7 +1,8 @@
 <?php
 
-require_once 'HashTest.php';
-
+/**
+ * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
+ */
 class HashAccessTest extends HashTest
 {
 

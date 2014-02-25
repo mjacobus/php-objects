@@ -1,7 +1,8 @@
 <?php
 
-require_once 'Hash.php';
-
+/**
+ * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
+ */
 class HashTest extends PHPUnit_Framework_TestCase
 {
     protected $o;
