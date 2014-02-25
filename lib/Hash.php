@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @see Object
- */
-require_once 'Object.php';
-
 class Hash extends Object implements ArrayAccess, Iterator
 {
 
