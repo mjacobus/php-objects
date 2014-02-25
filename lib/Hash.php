@@ -123,7 +123,7 @@ class Hash extends Object implements ArrayAccess, Iterator
      */
     public function reject($callback)
     {
-        $hash = self::create();
+        $hash = $this->create();
 
         foreach ($this as $key => $value) {
             if ($callback($value, $key) == false) {
@@ -142,7 +142,7 @@ class Hash extends Object implements ArrayAccess, Iterator
      */
     public function select($callback)
     {
-        $hash = self::create();
+        $hash = $this->create();
 
         foreach ($this as $key => $value) {
             if ($callback($value, $key) == true) {
@@ -161,7 +161,8 @@ class Hash extends Object implements ArrayAccess, Iterator
      */
     public static function create(array $params = array())
     {
-        return new Hash;
+        $class = get_called_class();
+        return new $class($params);
     }
 
     /**

@@ -118,4 +118,18 @@ class HashSugarTest extends HashTest
         $this->assertEquals($expectation, $array->toArray());
     }
 
+    /**
+     * @covers Hash::create()
+     */
+    public function testItCanFactoryTheCorrectClass()
+    {
+        $hash = new Dummy\Hash;
+        $created = $hash->create();
+        $this->assertInstanceOf('\Dummy\Hash', $created);
+
+        $params = array('a' => 'b');
+        $created = $hash->create($params);
+        $this->assertEquals($params, $created->toArray());
+    }
+
 }

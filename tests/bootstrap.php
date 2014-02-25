@@ -5,6 +5,7 @@ $testsPath = realpath(dirname(__FILE__) . '/../tests/');
 
 set_include_path(implode(PATH_SEPARATOR, array(
     $libPath,
+    $testsPath,
     get_include_path()
 )));
 
@@ -22,7 +23,7 @@ function autoload($className)
 
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    require $fileName;
+    @include $fileName;
 }
 
 spl_autoload_register('autoload');
