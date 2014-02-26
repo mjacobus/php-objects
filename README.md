@@ -1,6 +1,6 @@
 # PHP Objects
 
-Primitive types behaving like grown up objects.
+Primitive types behaving like grown up objects. Compatible with PHP 5.3.3+
 
 [![Build Status](https://travis-ci.org/mjacobus/php-objects.png?branch=master)](https://travis-ci.org/mjacobus/php-objects)
 
