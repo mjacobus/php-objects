@@ -175,8 +175,8 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
     {
         $hash = $this->create();
 
-        $this->each(function($value, $key) use ($callback, $hash) {
-            $hash[] = $callback($value, $key);
+        $this->each(function($value) use ($callback, $hash) {
+            $hash[] = $callback($value);
         });
 
         return $hash;

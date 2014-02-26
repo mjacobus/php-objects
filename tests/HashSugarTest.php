@@ -84,11 +84,11 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('a' => 'b', 'c' => 'd'));
 
-        $mapped = $hash->map(function($value, $key) {
-            return $key . $value;
+        $mapped = $hash->map(function($value) {
+            return $value;
         });
 
-        $expectation = array('ab', 'cd');
+        $expectation = array('b', 'd');
 
         $this->assertEquals($expectation, $mapped->toArray());
     }
@@ -97,6 +97,26 @@ class HashSugarTest extends HashTest
      * @covers Hash::each()
      */
     public function testItIterateViaEach()
+    {
+        $hash = new Hash(array('a' => 'b', 'c' => 'd'));
+
+        $array = new Hash;
+
+        $hash->each(function($value) use ($array) {
+            $array[] = $value;
+        })->each(function($value) use ($array) {
+            $array[] = $value;
+        });
+
+        $expectation = array( 'b', 'd', 'b', 'd');
+
+        $this->assertEquals($expectation, $array->toArray());
+    }
+
+    /**
+     * @covers Hash::each()
+     */
+    public function testItIterateViaEachWithIndex()
     {
         $hash = new Hash(array('a' => 'b', 'c' => 'd'));
 
