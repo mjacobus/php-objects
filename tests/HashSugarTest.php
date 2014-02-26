@@ -197,11 +197,11 @@ class HashSugarTest extends HashTest
     public function testDelete()
     {
         $object = $this->o;
-        $hash = Hash::create(['foo' => $object, 'b' => 'bar']);
+        $hash = Hash::create(array('foo' => $object, 'b' => 'bar'));
         $deleted = $hash->delete('foo');
 
         $this->assertSame($object, $deleted);
-        $this->assertEquals(['b' => 'bar'], $hash->toArray());
+        $this->assertEquals(array('b' => 'bar'), $hash->toArray());
     }
 
     /**
@@ -211,7 +211,7 @@ class HashSugarTest extends HashTest
      */
     public function testFetch()
     {
-        $hash = Hash::create(['foo' => 'bar']);
+        $hash = Hash::create(array('foo' => 'bar'));
         $this->assertEquals('bar', $hash->fetch('foo'));
         $hash->fetch('bar');
     }
