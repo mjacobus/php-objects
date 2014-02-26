@@ -267,4 +267,35 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
         throw new InvalidArgumentException("Invalid key '$key'");
     }
 
+    /**
+     * Get the values at the given indexes.
+     *
+     * Both work the same:
+     *    <code>
+     *      $hash->valuesAt(array('a', 'b'));
+     *      $hash->valuesAt('a', 'b');
+     *    </code>
+     *
+     * @param mixed keys
+     * @return Hash containing the values at the given keys
+     */
+    public function valuesAt()
+    {
+        $args = func_get_args();
+
+        if (is_array($args[0])) {
+           $arguments = $args[0];
+        } else {
+           $arguments = $args;
+        }
+
+        $hash = $this->create();
+
+        foreach($arguments as $key) {
+            $hash[] = $this[$key];
+        }
+
+        return $hash;
+    }
+
 }

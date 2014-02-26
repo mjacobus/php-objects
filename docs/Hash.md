@@ -202,5 +202,16 @@ $filtered = $hash->select(function($value, $key) {
 - update
 - value?
 - values
-- values_at
+### values_at
+
+Get the values at the given keys.
+
+```php
+$hash = new Hash(array('a' => 'b', 'c' => 'b'));
+
+$hash->valuesAt(array('a', 'b'))->toArray(); // array('b', null)
+
+// same as
+$hash->valuesAt('a', 'b')->toArray();        // array('b', null)
+```
 - zip

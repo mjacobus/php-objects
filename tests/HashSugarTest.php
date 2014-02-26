@@ -216,4 +216,17 @@ class HashSugarTest extends HashTest
         $hash->fetch('bar');
     }
 
+    /**
+     * @covers Hash::valuesAt()
+     */
+    public function testValuesAt()
+    {
+        $hash = new Hash(array('a' => 'b', 'c' => 'b'));
+
+        $expected = array('b', null);
+
+        $this->assertEquals($expected, $hash->valuesAt(array('a', 'b'))->toArray());
+        $this->assertEquals($expected, $hash->valuesAt('a', 'b')->toArray());
+    }
+
 }
