@@ -11,6 +11,7 @@ Well, not anymore. Hopefully.
 
 - [Object](docs/Object.md)
 - [Hash](docs/Hash.md)
+- [String](docs/String.md)
 
 
 ## Lincense
