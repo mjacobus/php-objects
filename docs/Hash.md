@@ -9,7 +9,6 @@ The examplified methods are already ported. The non documented methods must be i
 
 ### compact (not in ruby Hash)
 Removes null and empty
-
 ```php
 $hash = new Hash(array(
   'foo'   => 'bar',
@@ -68,6 +67,7 @@ Hash::create(['a' => 'b'])->isEmpty(); // false
 - key?
 
 ### keys
+Get the array keys. Return a Hash.
 ```php
 Hash::create(['a' => 'b'])->keys()->toArray(); // array('a')
 ```
