@@ -165,4 +165,19 @@ class HashSugarTest extends HashTest
         $this->assertEquals(0, count($hash));
     }
 
+    /**
+     * @covers Hash::keys()
+     */
+    public function testKeys()
+    {
+        $hash = new Hash(array(
+            'foo' => 'foobar',
+            'bar' => 'barfoo'
+        ));
+
+        $expected = array('foo', 'bar');
+
+        $this->assertEquals($expected, $hash->keys()->toArray());
+    }
+
 }

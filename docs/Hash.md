@@ -20,9 +20,7 @@ $hash = new Hash(array(
 $hash->compact()->toArray(); // array('foo' => 'bar')
 ```
 ### count
-
 Get the number of keys
-
 ```php
 Hash::create(['a' => 'b'])->count(); // 1
 ```
@@ -41,8 +39,7 @@ Hash::create(['a' => 'b'])->count(); // 1
 - each_value
 - each_with_index
 - each_with_object
-
-### empty (see isEmpty)
+- empty (see isEmpty)
 - entries
 - fetch
 - find
@@ -62,20 +59,24 @@ Hash::create(['a' => 'b'])->count(); // 1
 
 ### isEmpty
 Is empty?
-
 ```php
 Hash::create(['a' => 'b'])->isEmpty(); // false
 ```
+
 - keep_if
 - key
 - key?
-- keys
+
+### keys
+```php
+Hash::create(['a' => 'b'])->keys()->toArray(); // array('a')
+```
+
 - lazy
 - length
 
 ### map
 Maps modified elements into a new hash
-
 ```php
 $hash = new Hash(array('a' => 'b', 'c' => 'd'));
 
@@ -103,7 +104,6 @@ $mapped = $hash->map(function($value, $key) {
 
 ### reject
 New Hash with elements that will not match the given callback
-
 ```php
 $hash = new Hash(array(
   'foo' => 'foobar',
@@ -122,7 +122,6 @@ $filtered = $hash->reject(function($value, $key) {
 
 ### select
 New Hash with elements that match the given callback
-
 ```php
 $hash = new Hash(array(
   'foo' => 'foobar',
