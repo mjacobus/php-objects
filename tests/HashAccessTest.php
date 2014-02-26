@@ -45,4 +45,13 @@ class HashAccessTest extends HashTest
         $this->assertEquals(array(), $hash->toArray());
     }
 
+    public function testItCanBeConvertedToArray()
+    {
+        $array = array('a' => 'b', 'b' => 'c' );
+        $hash = new Hash($array);
+
+        $this->assertEquals($array, (array) $hash);
+        $this->assertEquals($array, $hash->toArray());
+    }
+
 }
