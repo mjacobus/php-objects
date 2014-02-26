@@ -284,14 +284,12 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
         $args = func_get_args();
 
         if (is_array($args[0])) {
-           $arguments = $args[0];
-        } else {
-           $arguments = $args;
+           $args = $args[0];
         }
 
         $hash = $this->create();
 
-        foreach($arguments as $key) {
+        foreach($args as $key) {
             $hash[] = $this[$key];
         }
 
