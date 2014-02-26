@@ -6,8 +6,8 @@ The examplified methods are already ported. The non documented methods must be i
 ## Hash (ported or to port methods)
 - clear
 - collect - Use map instead.
-- **compact** (not in ruby Hash)
 
+### compact (not in ruby Hash)
 Removes null and empty
 
 ```php
@@ -19,7 +19,7 @@ $hash = new Hash(array(
 
 $hash->compact()->toArray(); // array('foo' => 'bar')
 ```
-- count
+### count
 
 Get the number of keys
 
@@ -41,11 +41,8 @@ Hash::create(['a' => 'b'])->count(); // 1
 - each_value
 - each_with_index
 - each_with_object
-- empty? =isEmpty
-Is empty?
-```php
-Hash::create(['a' => 'b'])->isEmpty(); // false
-```
+
+### empty (see isEmpty)
 - entries
 - fetch
 - find
@@ -62,14 +59,21 @@ Hash::create(['a' => 'b'])->isEmpty(); // false
 - index
 - inject
 - invert
+
+### isEmpty
+Is empty?
+
+```php
+Hash::create(['a' => 'b'])->isEmpty(); // false
+```
 - keep_if
 - key
 - key?
 - keys
 - lazy
 - length
-- map
 
+### map
 Maps modified elements into a new hash
 
 ```php
@@ -96,8 +100,8 @@ $mapped = $hash->map(function($value, $key) {
 - rassoc
 - reduce
 - rehash
-- reject
 
+### reject
 New Hash with elements that will not match the given callback
 
 ```php
@@ -115,8 +119,8 @@ $filtered = $hash->reject(function($value, $key) {
 - reject!
 - replace
 - reverse_each
-- select
 
+### select
 New Hash with elements that match the given callback
 
 ```php
