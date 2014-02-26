@@ -227,4 +227,15 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
         return $this->create(array_keys($this->toArray()));
     }
 
+    /**
+     * Check object has given key
+     *
+     * @param string $key
+     * @return bool
+     */
+    public function hasKey($key)
+    {
+        return $this->offsetExists($key);
+    }
+
 }

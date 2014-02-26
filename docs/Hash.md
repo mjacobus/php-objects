@@ -49,7 +49,15 @@ Hash::create(['a' => 'b'])->count(); // 1
 - flatten
 - grep
 - group_by
-- has_key?
+
+### hasKey
+
+Check if key exists.
+
+```php
+$hash->hasKey('foo') // true
+```
+
 - has_value?
 - include?
 - index
