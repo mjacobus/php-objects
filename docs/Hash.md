@@ -42,7 +42,24 @@ $deleted === $object // true
 - detect
 - drop
 - drop_while
-- each
+
+### each
+
+Iterates through the values and keys of the object.
+
+```php
+$hash = new Hash(array('a' => 'b', 'c' => 'd'));
+
+$array = new Hash;
+
+$hash->each(function($value, $key) use ($array) {
+    $array[] = $key;
+    $array[] = $value;
+});
+
+$hash->toArray() // array( 'a', 'b', 'c', 'd');
+```
+
 - each_cons
 - each_entry
 - each_key
