@@ -86,7 +86,10 @@ Hash::create(['a' => 'b'])->keys()->toArray(); // array('a')
 ### map
 Maps modified elements into a new hash
 ```php
-$hash = new Hash(array('a' => 'b', 'c' => 'd'));
+$hash = new Hash(array(
+  'a' => 'b',
+  'c' => 'd'
+));
 
 $mapped = $hash->map(function($value, $key) {
     return $key . $value;
@@ -120,7 +123,7 @@ $hash = new Hash(array(
 
 $filtered = $hash->reject(function($value, $key) {
     return $value === 'barfoo';
-});
+})->toArray();
 
 // array('foo' ='foobar')
 ```
