@@ -251,4 +251,20 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
         return $element;
     }
 
+    /**
+     * Get the value by the key. Throws exception when key is not set
+     *
+     * @param string $key
+     * @return mixed the value for the given key
+     * @throws InvalidArgumentException
+     */
+    public function fetch($key)
+    {
+        if ($this->hasKey($key)) {
+            return $this[$key];
+        }
+
+        throw new InvalidArgumentException("Invalid key '$key'");
+    }
+
 }

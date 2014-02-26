@@ -70,7 +70,19 @@ $hash->toArray() // array( 'a', 'b', 'c', 'd');
 - each_with_object
 - empty (see isEmpty)
 - entries
-- fetch
+
+### fetch
+
+Gets the value by the given key. If the key is not set, throws InvalidArgumentException
+
+```php
+$hash = Hash::create(['foo' => 'bar']);
+
+$hash->fetch('foo') // bar
+
+$hash->fetch('bar') // throws InvalidArgumentException
+```
+
 - find
 - find_all
 - find_index

@@ -204,4 +204,16 @@ class HashSugarTest extends HashTest
         $this->assertEquals(['b' => 'bar'], $hash->toArray());
     }
 
+    /**
+     * @covers Hash::fetch()
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Invalid key 'bar'
+     */
+    public function testFetch()
+    {
+        $hash = Hash::create(['foo' => 'bar']);
+        $this->assertEquals('bar', $hash->fetch('foo'));
+        $hash->fetch('bar');
+    }
+
 }
