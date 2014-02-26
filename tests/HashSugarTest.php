@@ -191,4 +191,17 @@ class HashSugarTest extends HashTest
         $this->assertFalse($hash->hasKey('bar'));
     }
 
+    /**
+     * @covers Hash::delete()
+     */
+    public function testDelete()
+    {
+        $object = $this->o;
+        $hash = Hash::create(['foo' => $object, 'b' => 'bar']);
+        $deleted = $hash->delete('foo');
+
+        $this->assertSame($object, $deleted);
+        $this->assertEquals(['b' => 'bar'], $hash->toArray());
+    }
+
 }

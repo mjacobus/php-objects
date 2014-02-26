@@ -24,7 +24,20 @@ Get the number of keys
 Hash::create(['a' => 'b'])->count(); // 1
 ```
 - cycle
-- delete
+
+### delete
+Removes the element from the Hash and returns it.
+```php
+$object = new Something;
+
+$hash = Hash::create(['foo' => $object, 'b' => 'bar']);
+
+$deleted = $hash->delete('foo');
+
+$hash->toArray());   // ['b' => 'bar']
+
+$deleted === $object // true
+```
 - delete_if
 - detect
 - drop

@@ -238,4 +238,17 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
         return $this->offsetExists($key);
     }
 
+    /**
+     * Gets teh index and removes it from the object
+     *
+     * @param string $key
+     * @return mixed the element on the given index
+     */
+    public function delete($key)
+    {
+        $element = $this[$key];
+        $this->offsetUnset($key);
+        return $element;
+    }
+
 }
