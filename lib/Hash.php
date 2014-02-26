@@ -299,7 +299,7 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
     /**
      * Join the values of the object
      *
-     * @param separator $separator defauts to empty string
+     * @param string $separator defauts to empty string
      * @return string
      */
     public function join($separator = '')
