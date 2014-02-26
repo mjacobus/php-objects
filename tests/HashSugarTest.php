@@ -229,4 +229,15 @@ class HashSugarTest extends HashTest
         $this->assertEquals($expected, $hash->valuesAt('a', 'b')->toArray());
     }
 
+    /**
+     * @covers Hash::join()
+     */
+    public function testJoin()
+    {
+        $hash = new Hash(array('a' => 'b', 'c' => 'd' ));
+
+        $this->assertEquals('bd', $hash->join());
+        $this->assertEquals('b, d', $hash->join(', '));
+    }
+
 }

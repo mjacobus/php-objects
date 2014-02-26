@@ -112,6 +112,13 @@ Is empty?
 Hash::create(['a' => 'b'])->isEmpty(); // false
 ```
 
+### join (not in ruby Hash)
+Joins element values
+
+```php
+$hash = new Hash(array('foo'   => 'bar', 'bar' => 'baz');
+$hash->join(', '); // 'bar, baz'
+```
 - keep_if
 - key
 - key?

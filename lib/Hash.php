@@ -296,4 +296,15 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
         return $hash;
     }
 
+    /**
+     * Join the values of the object
+     *
+     * @param separator $separator defauts to empty string
+     * @return string
+     */
+    public function join($separator = '')
+    {
+        return implode($separator, $this->toArray());
+    }
+
 }
