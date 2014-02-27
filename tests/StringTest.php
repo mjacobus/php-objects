@@ -27,8 +27,88 @@ class StringTest extends PHPUnit_Framework_TestCase
      */
     public function testItCanAppendString()
     {
-        $this->o->append('abc')->append(new String('de'));
-        $this->assertEquals('abcde', (string) $this->o);
+        $string = new String;
+        $string->append('abc')->append(new String('de'));
+        $this->assertEquals('abcde', (string) $string);
+    }
+
+    /**
+     * Data Provider
+     */
+    public function caseProvider()
+    {
+        return array(
+            array('abc', 'ABC'),
+            array('saúdações', 'SAÚDAÇÕES'),
+        );
+    }
+
+    /**
+     * @dataProvider caseProvider
+     * @covers String::toUpperCase()
+     */
+    public function testToUppercase($lower, $upper)
+    {
+        $string = new String($lower);
+        $this->assertEquals($upper, $string->toUpperCase());
+        $this->assertInstanceOf('String', $string->toUpperCase());
+    }
+
+    /**
+     * @dataProvider caseProvider
+     * @covers String::toLowerCase()
+     */
+    public function testToLowerCase($lower, $upper)
+    {
+        $string = new String($upper);
+        $this->assertEquals($lower, $string->toLowerCase());
+        $this->assertInstanceOf('String', $string->toLowerCase());
+    }
+
+    /**
+     * Data Provider
+     */
+    public function parameterizedProvider()
+    {
+        return array(
+            array('Foo Bar', 'foo-bar', '-'),
+            array('Foo Bar', 'foo_bar', '_'),
+            array('M!@#$%)ab C', 'mab-c', '-'),
+        );
+    }
+
+    /**
+     * @dataProvider parameterizedProvider
+     * @covers String::parameterize()
+     */
+    public function testParameterize($normal, $parameterized, $separator)
+    {
+        $string = new String($normal);
+        $this->assertEquals($parameterized, $string->parameterize($separator));
+        $this->assertInstanceOf('String', $string->toLowerCase());
+    }
+
+    /**
+     * Data Provider
+     */
+    public function providerForGsub()
+    {
+        return array(
+            array('abcdabc', 'a', 'A', 'AbcdAbc'),
+            array('abcdabc', '/[ac]/', 'A', 'AbAdAbA'),
+        );
+    }
+
+    /**
+     * @dataProvider providerForGsub
+     * @covers String::gsub()
+     */
+    public function testGsub($string, $find, $replacement, $expected)
+    {
+        $string = new String($string);
+        $result = $string->gsub($find, $replacement);
+        $this->assertEquals($expected, $result);
+        $this->assertInstanceOf('String', $result);
     }
 
 }
