@@ -111,4 +111,13 @@ class StringTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('String', $result);
     }
 
+    public function testSplit()
+    {
+        $string   = new String('a, b, c');
+        $expected = array('a', 'b', 'c');
+        $split    = $string->split(', ');
+        $this->assertEquals($expected, $split->toArray());
+        $this->assertInstanceOf('String', $split->first());
+    }
+
 }

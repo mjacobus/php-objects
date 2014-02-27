@@ -85,8 +85,9 @@ class String extends Object
     }
 
     /**
-     * Checks if string is regexp. If param is not given, the considered string
-     * is the object itself.
+     * Checks if string is a Regular Expression.
+     *
+     * If param is not given, the considered string is the object itself.
      *
      * @param string $string defaults to null
      * @return bool
@@ -99,5 +100,20 @@ class String extends Object
 
         return preg_match('/\/.*\//', $string);
     }
+
+    /**
+     * Splits the string
+     * @param string separator
+     * @return Hash[String]
+     */
+    public function split($separator)
+    {
+        $hash = new Hash(explode((string) $separator, (string) $this));
+
+        return $hash->map(function($value) {
+            return new String($value);
+        });
+    }
+
 
 }
