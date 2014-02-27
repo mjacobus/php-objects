@@ -32,4 +32,6 @@ Well, not anymore. Hopefully.
 
 **Do not forget to write tests**
 
+**Keep the [Zend code standard](http://framework.zend.com/wiki/display/ZFDEV2/Coding+Standards)**
+
 **Keep the code coverage**
