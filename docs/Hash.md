@@ -3,6 +3,9 @@
 This is a (work in progress) port of Ruby Hash to PHP. Not all methods will be ported.
 The examplified methods are already ported. The non documented methods must be implemented.
 
+Note that the API is not very consistent. You get the ```last``` method, but perhaps the best choice would be ```getLast```.
+
+
 ## Hash (ported or to port methods)
 - ```clear```
 - ```collect``` - Use map instead.
@@ -25,7 +28,7 @@ Hash::create(['a' => 'b'])->count(); // 1
 ```
 
 - ```cycle```
-- delete - Removes the element from the Hash and returns it.
+- ```delete``` - Removes the element from the Hash and returns it.
 
 ```php
 $object = new Something;
@@ -43,7 +46,7 @@ $deleted === $object // true
 - ```detect```
 - ```drop```
 - ```drop_while```
-- each - Iterates through the values and keys of the object.
+- ```each``` - Iterates through the values and keys of the object.
 
 ```php
 $hash = new Hash(array('a' => 'b', 'c' => 'd'));
@@ -81,7 +84,7 @@ $hash->fetch('bar') // throws InvalidArgumentException
 - ```find```
 - ```find_all```
 - ```find_index```
-- ```first```
+- ```first``` - Get the first element
 - ```flat_map```
 - ```flatten```
 - ```grep```
@@ -118,6 +121,7 @@ $hash->join(', '); // 'bar, baz'
 Hash::create(['a' => 'b'])->keys()->toArray(); // array('a')
 ```
 
+- ```last``` - Get the element
 - ```lazy```
 - ```length```
 - ```map``` - Maps modified elements into a new hash
@@ -150,7 +154,6 @@ $mapped = $hash->map(function($value, $key) {
 - ```rassoc```
 - ```reduce```
 - ```rehash```
-
 - ```reject``` -  New Hash with elements that will not match the given callback
 
 ```php
