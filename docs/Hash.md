@@ -5,8 +5,9 @@ The examplified methods are already ported. The non documented methods must be i
 
 Note that the API is not very consistent. You get the ```last``` method, but perhaps the best choice would be ```getLast```.
 
+The methods that have description are the ones that were impplemented. Fill free to write your implementation.
 
-## Hash (ported or to port methods)
+
 - ```clear```
 - ```collect``` - Use map instead.
 - ```compact``` (not in ruby Hash) - Removes null and empty
