@@ -161,7 +161,8 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
      */
     public static function create(array $params = array())
     {
-        return new self($params)
+        $class = get_called_class();
+        return new $class($params);
     }
 
     /**
