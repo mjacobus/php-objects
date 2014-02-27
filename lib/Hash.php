@@ -315,7 +315,8 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
      */
     public function first()
     {
-        return array_shift($this->toArray());
+        $array = $this->toArray();
+        return array_shift($array);
     }
 
     /**
@@ -324,7 +325,8 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
      */
     public function last()
     {
-        return array_pop($this->toArray());
+        $array = $this->toArray();
+        return array_pop($array);
     }
 
 }
