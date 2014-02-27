@@ -220,11 +220,13 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
     /**
      * Get the array keys
      *
-     * @return Hash containing the keys
+     * @return Hash[String] containing the keys
      */
     public function keys()
     {
-        return $this->create(array_keys($this->toArray()));
+        return $this->create(array_keys($this->toArray()))->map(function($key) {
+            return new String($key);
+        });
     }
 
     /**
@@ -305,6 +307,24 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
     public function join($separator = '')
     {
         return implode($separator, $this->toArray());
+    }
+
+    /**
+     * Get first element
+     * @return mixed
+     */
+    public function first()
+    {
+        return array_shift($this->toArray());
+    }
+
+    /**
+     * Get the last element
+     * @return mixed
+     */
+    public function last()
+    {
+        return array_pop($this->toArray());
     }
 
 }

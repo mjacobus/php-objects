@@ -198,6 +198,7 @@ class HashSugarTest extends HashTest
         $expected = array('foo', 'bar');
 
         $this->assertEquals($expected, $hash->keys()->toArray());
+        $this->assertInstanceOf('String', $hash->keys()->first());
     }
 
     /**
@@ -258,6 +259,24 @@ class HashSugarTest extends HashTest
 
         $this->assertEquals('bd', $hash->join());
         $this->assertEquals('b, d', $hash->join(', '));
+    }
+
+    /**
+     * @covers Hash::first()
+     */
+    public function testFirst()
+    {
+        $hash = new Hash(array('a', 'b'));
+        $this->assertEquals('a', $hash->first());
+    }
+
+    /**
+     * @covers Hash::last()
+     */
+    public function testLast()
+    {
+        $hash = new Hash(array('a', 'b'));
+        $this->assertEquals('b', $hash->last());
     }
 
 }
