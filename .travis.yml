@@ -5,6 +5,9 @@ php:
   - 5.4
   - 5.3.3
   - hhvm
+before_script:
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
 script: phpunit --configuration=tests/phpunit.xml && phpcs --standard=Zend lib
 branches:
   only:
