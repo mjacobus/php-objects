@@ -30,8 +30,9 @@ class HashAccessTest extends HashTest
 
     public function testItCanGetDefaultValues()
     {
-        $this->assertNull($this->o['foo']);
-        $this->assertEquals('bar', $this->o->offsetGet('foo', 'bar'));
+        $object = new Hash;
+        $this->assertNull($object['foo']);
+        $this->assertEquals('bar', $object->offsetGet('foo', 'bar'));
     }
 
     public function testIsCanUnsetKey()

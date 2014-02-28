@@ -6,13 +6,6 @@
 class StringTest extends PHPUnit_Framework_TestCase
 {
 
-    protected $o;
-
-    public function setUp()
-    {
-        $this->o = new String();
-    }
-
     /**
      * @covers String::__toString()
      */

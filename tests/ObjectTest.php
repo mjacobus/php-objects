@@ -1,6 +1,9 @@
 <?php
 
-class MyObject extends Object {}
+class MyObject extends Object
+{
+
+}
 
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>

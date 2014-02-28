@@ -2,7 +2,7 @@
 
 namespace Dummy;
 
-class Type 
+class Type
 {
 
     public static function requireArray(array $var)
