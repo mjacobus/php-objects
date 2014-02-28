@@ -6,9 +6,8 @@ php:
   - 5.3.3
   - hhvm
 before_script:
-  - pyrus install pear/PHP_CodeSniffer
-  - phpenv rehash
-script: phpunit --configuration=tests/phpunit.xml && phpcs --standard=Zend lib
+  - ./bin/travis/before_script.sh
+script: ./bin/travis/script.sh
 branches:
   only:
     - master
