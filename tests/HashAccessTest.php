@@ -45,13 +45,25 @@ class HashAccessTest extends HashTest
         $this->assertEquals(array(), $hash->toArray());
     }
 
+    public function testItIsConsideredAnArray()
+    {
+        $this->markTestSkipped('Perhaps it is not possible');
+        $this->assertTrue(is_array(new Hash));
+    }
+
     public function testItCanBeConvertedToArray()
     {
+        $this->markTestSkipped('Perhaps it is not possible');
         $array = array('a' => 'b', 'b' => 'c' );
         $hash = new Hash($array);
+        $this->assertEquals($array, Dummy\Type::toArray($hash));
+    }
 
-        $this->assertEquals($array, (array) $hash);
-        $this->assertEquals($array, $hash->toArray());
+    public function testItInterchangeWithArray()
+    {
+        $this->markTestSkipped('Perhaps it is not possible');
+        $hash = new Hash();
+        Dummy\Type::requireArray($hash);
     }
 
 }
