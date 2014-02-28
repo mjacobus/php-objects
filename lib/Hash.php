@@ -108,11 +108,17 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
         return ($key !== null && $key !== false);
     }
 
+    /**
+     * Get a new Hash without elements that have empty or null values
+     * @return Hash
+     */
     public function compact()
     {
-        return $this->reject(function ($value, $key) {
-            return $value === '' || $value === null;
-        });
+        return $this->reject(
+            function ($value, $key) {
+                return $value === '' || $value === null;
+            }
+        );
     }
 
     /**
@@ -175,9 +181,11 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
     {
         $hash = $this->create();
 
-        $this->each(function($value) use ($callback, $hash) {
-            $hash[] = $callback($value);
-        });
+        $this->each(
+            function ($value) use ($callback, $hash) {
+                $hash[] = $callback($value);
+            }
+        );
 
         return $hash;
     }
@@ -224,9 +232,11 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
      */
     public function keys()
     {
-        return $this->create(array_keys($this->toArray()))->map(function($key) {
-            return new String($key);
-        });
+        return $this->create(array_keys($this->toArray()))->map(
+            function ($key) {
+                return new String($key);
+            }
+        );
     }
 
     /**
@@ -291,7 +301,7 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
 
         $hash = $this->create();
 
-        foreach($args as $key) {
+        foreach ($args as $key) {
             $hash[] = $this[$key];
         }
 

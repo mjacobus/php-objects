@@ -32,6 +32,12 @@ Well, not anymore. Hopefully.
 
 **Do not forget to write tests**
 
-**Keep the [Zend code standard](http://framework.zend.com/wiki/display/ZFDEV2/Coding+Standards)**
+**Keep the code standard [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md), [Zend](http://framework.zend.com/wiki/display/ZFDEV2/Coding+Standards)**
+
+To check the code run:
+
+```bash
+phpcs --standard=Zend lib
+```
 
 **Keep the code coverage**

@@ -110,9 +110,11 @@ class String extends Object
     {
         $hash = new Hash(explode((string) $separator, (string) $this));
 
-        return $hash->map(function($value) {
-            return new String($value);
-        });
+        return $hash->map(
+            function ($value) {
+                return new String($value);
+            }
+        );
     }
 
 
