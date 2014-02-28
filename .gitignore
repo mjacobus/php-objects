@@ -1,3 +1,5 @@
 coverage
 log
 tests/html.php
+
+/vendor/
