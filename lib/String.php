@@ -117,5 +117,22 @@ class String extends Object
         );
     }
 
+    /**
+     * Get the number of chars
+     * @return int
+     */
+    public function count()
+    {
+        return mb_strlen((string) $this, 'UTF-8');
+    }
+
+    /**
+     * Get the number of chars
+     * @return int
+     */
+    public function length()
+    {
+        return $this->count();
+    }
 
 }

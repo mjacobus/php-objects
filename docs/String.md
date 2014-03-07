@@ -23,7 +23,7 @@ The methods that have description are the ones that were impplemented. Fill free
 - ```clear```
 - ```codepoints```
 - ```concat```
-- ```count```
+- ```count``` - Get the number of chars
 - ```crypt```
 - ```delete```
 - ```delete!```
@@ -49,7 +49,7 @@ The methods that have description are the ones that were impplemented. Fill free
 - ```insert```
 - ```intern```
 - ```isRegexp``` - does not exist in ruby. Ass a regexp is not an object in PHP, this method tells if the object is a Regular Expression.
-- ```length```
+- ```length``` - alias to count
 - ```lines```
 - ```ljust```
 - ```lstrip```

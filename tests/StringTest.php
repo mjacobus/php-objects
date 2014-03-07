@@ -113,4 +113,21 @@ class StringTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('String', $split->first());
     }
 
+    public function countProvider()
+    {
+        return array(
+            array('abc', 3),
+            array('ÂçÇÉ', 4),
+        );
+    }
+
+    /**
+     * @dataProvider countProvider
+     */
+    public function testCount($string, $count)
+    {
+        $string = new String($string);
+        $this->assertEquals($count, $string->count());
+    }
+
 }
