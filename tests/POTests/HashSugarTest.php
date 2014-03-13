@@ -317,9 +317,11 @@ class HashSugarTest extends HashTest
 
         $hash = new Hash(array($foo, $bar, $baz));
 
-        $groups = $hash->groupBy(function ($element) {
-            return $element['age'];
-        });
+        $groups = $hash->groupBy(
+            function ($element) {
+                return $element['age'];
+            }
+        );
 
         $expected = array(
             20 => array($foo, $bar),

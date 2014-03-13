@@ -355,9 +355,9 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
 
             $this->each(
                 function ($element, $key) use ($groups, $criteria) {
-                    $groupName          = $criteria($element, $key);
-                    $elements           = $groups->offsetGet($groupName, array());
-                    $elements[]         = $element;
+                    $groupName  = $criteria($element, $key);
+                    $elements   = $groups->offsetGet($groupName, array());
+                    $elements[] = $element;
                     $groups[$groupName] = $elements;
                 }
             );
