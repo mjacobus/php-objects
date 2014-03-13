@@ -1,5 +1,9 @@
 <?php
 
+namespace POTests;
+
+use PO\Hash;
+
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
@@ -7,7 +11,7 @@ class HashSugarTest extends HashTest
 {
 
     /**
-     * @covers Hash::compact()
+     * @covers PO\Hash::compact()
      */
     public function testItCanCampactAHash()
     {
@@ -18,7 +22,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::reject()
+     * @covers PO\Hash::reject()
      */
     public function testItCanRejectElementsByValue()
     {
@@ -35,7 +39,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::reject()
+     * @covers PO\Hash::reject()
      */
     public function testItCanRejectElementsByKey()
     {
@@ -52,7 +56,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::select()
+     * @covers PO\Hash::select()
      */
     public function testItCanSelectElementsByValue()
     {
@@ -69,7 +73,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::select()
+     * @covers PO\Hash::select()
      */
     public function testItCanSelectElementsByKey()
     {
@@ -86,7 +90,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::map()
+     * @covers PO\Hash::map()
      */
     public function testItCanMapElements()
     {
@@ -104,7 +108,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::each()
+     * @covers PO\Hash::each()
      */
     public function testItIterateViaEach()
     {
@@ -128,7 +132,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::each()
+     * @covers PO\Hash::each()
      */
     public function testItIterateViaEachWithIndex()
     {
@@ -157,11 +161,11 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::create()
+     * @covers PO\Hash::create()
      */
     public function testItCanFactoryTheCorrectClass()
     {
-        $hash = new Dummy\Hash;
+        $hash = new \Dummy\Hash;
         $created = $hash->create();
         $this->assertInstanceOf('\Dummy\Hash', $created);
 
@@ -171,7 +175,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::isEmpty()
+     * @covers PO\Hash::isEmpty()
      */
     public function testIsEmpty()
     {
@@ -187,7 +191,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::count()
+     * @covers PO\Hash::count()
      */
     public function testCount()
     {
@@ -204,7 +208,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::keys()
+     * @covers PO\Hash::keys()
      */
     public function testKeys()
     {
@@ -218,11 +222,11 @@ class HashSugarTest extends HashTest
         $expected = array('foo', 'bar');
 
         $this->assertEquals($expected, $hash->keys()->toArray());
-        $this->assertInstanceOf('String', $hash->keys()->first());
+        $this->assertInstanceOf('PO\String', $hash->keys()->first());
     }
 
     /**
-     * @covers Hash::hasKey()
+     * @covers PO\Hash::hasKey()
      */
     public function testHasKey()
     {
@@ -233,7 +237,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::delete()
+     * @covers PO\Hash::delete()
      */
     public function testDelete()
     {
@@ -246,7 +250,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::fetch()
+     * @covers PO\Hash::fetch()
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Invalid key 'bar'
      */
@@ -258,7 +262,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::valuesAt()
+     * @covers PO\Hash::valuesAt()
      */
     public function testValuesAt()
     {
@@ -274,7 +278,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::join()
+     * @covers PO\Hash::join()
      */
     public function testJoin()
     {
@@ -285,7 +289,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::first()
+     * @covers PO\Hash::first()
      */
     public function testFirst()
     {
@@ -294,7 +298,7 @@ class HashSugarTest extends HashTest
     }
 
     /**
-     * @covers Hash::last()
+     * @covers PO\Hash::last()
      */
     public function testLast()
     {

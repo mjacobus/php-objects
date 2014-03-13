@@ -1,5 +1,9 @@
 <?php
 
+namespace POTests;
+
+use PO\Hash;
+
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */

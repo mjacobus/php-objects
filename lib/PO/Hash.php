@@ -1,9 +1,11 @@
 <?php
 
+namespace PO;
+
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
-class Hash extends Object implements ArrayAccess, Iterator, Countable
+class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
 {
 
     /**
@@ -276,7 +278,7 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
             return $this[$key];
         }
 
-        throw new InvalidArgumentException("Invalid key '$key'");
+        throw new \InvalidArgumentException("Invalid key '$key'");
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Dummy;
 
-class Hash extends \Hash
+class Hash extends \PO\Hash
 {
 
 }

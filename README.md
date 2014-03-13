@@ -9,9 +9,9 @@ hell out off ruby objects.
 
 Well, not anymore. Hopefully.
 
-- [Object](docs/Object.md)
-- [Hash](docs/Hash.md)
-- [String](docs/String.md)
+- [PO\Object](docs/Object.md)
+- [PO\Hash](docs/Hash.md)
+- [PO\String](docs/String.md)
 
 
 ## Lincense

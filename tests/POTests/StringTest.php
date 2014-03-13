@@ -1,13 +1,17 @@
 <?php
 
+namespace POTests;
+
+use PO\String;
+
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
-class StringTest extends PHPUnit_Framework_TestCase
+class StringTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @covers String::__toString()
+     * @covers PO\String::__toString()
      */
     public function testItCanBeConvertedToString()
     {
@@ -16,7 +20,7 @@ class StringTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers String::append()
+     * @covers PO\String::append()
      */
     public function testItCanAppendString()
     {
@@ -38,24 +42,24 @@ class StringTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider caseProvider
-     * @covers String::toUpperCase()
+     * @covers PO\String::toUpperCase()
      */
     public function testToUppercase($lower, $upper)
     {
         $string = new String($lower);
         $this->assertEquals($upper, $string->toUpperCase());
-        $this->assertInstanceOf('String', $string->toUpperCase());
+        $this->assertInstanceOf('PO\String', $string->toUpperCase());
     }
 
     /**
      * @dataProvider caseProvider
-     * @covers String::toLowerCase()
+     * @covers PO\String::toLowerCase()
      */
     public function testToLowerCase($lower, $upper)
     {
         $string = new String($upper);
         $this->assertEquals($lower, $string->toLowerCase());
-        $this->assertInstanceOf('String', $string->toLowerCase());
+        $this->assertInstanceOf('PO\String', $string->toLowerCase());
     }
 
     /**
@@ -72,13 +76,13 @@ class StringTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider parameterizedProvider
-     * @covers String::parameterize()
+     * @covers PO\String::parameterize()
      */
     public function testParameterize($normal, $parameterized, $separator)
     {
         $string = new String($normal);
         $this->assertEquals($parameterized, $string->parameterize($separator));
-        $this->assertInstanceOf('String', $string->toLowerCase());
+        $this->assertInstanceOf('PO\String', $string->toLowerCase());
     }
 
     /**
@@ -94,14 +98,14 @@ class StringTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForGsub
-     * @covers String::gsub()
+     * @covers PO\String::gsub()
      */
     public function testGsub($string, $find, $replacement, $expected)
     {
         $string = new String($string);
         $result = $string->gsub($find, $replacement);
         $this->assertEquals($expected, $result);
-        $this->assertInstanceOf('String', $result);
+        $this->assertInstanceOf('PO\String', $result);
     }
 
     public function testSplit()
@@ -110,7 +114,7 @@ class StringTest extends PHPUnit_Framework_TestCase
         $expected = array('a', 'b', 'c');
         $split    = $string->split(', ');
         $this->assertEquals($expected, $split->toArray());
-        $this->assertInstanceOf('String', $split->first());
+        $this->assertInstanceOf('PO\String', $split->first());
     }
 
     public function countProvider()

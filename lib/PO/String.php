@@ -1,5 +1,7 @@
 <?php
 
+namespace PO;
+
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
