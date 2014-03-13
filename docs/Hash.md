@@ -7,6 +7,9 @@ Note that the API is not very consistent. You get the ```last``` method, but per
 
 The methods that have description are the ones that were impplemented. Fill free to write your implementation.
 
+```php
+use PO\Hash;
+```
 
 - ```clear```
 - ```collect``` - Use map instead.
