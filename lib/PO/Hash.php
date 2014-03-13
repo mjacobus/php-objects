@@ -341,4 +341,35 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
         return array_pop($array);
     }
 
+    /**
+     * Group elements by the given criteria
+     *
+     * @param mixed $criteria it can be either a function or a string,
+     *      representing a key of an element
+     * @return Hash
+     */
+    public function groupBy($criteria)
+    {
+        if (gettype($criteria) === 'object') {
+            $groups = $this->create();
+
+            $this->each(
+                function ($element, $key) use ($groups, $criteria) {
+                    $groupName          = $criteria($element, $key);
+                    $elements           = $groups->offsetGet($groupName, array());
+                    $elements[]         = $element;
+                    $groups[$groupName] = $elements;
+                }
+            );
+
+            return $groups;
+        } else {
+            return $this->groupBy(
+                function ($element) use ($criteria) {
+                   return $element[$criteria];
+                }
+            );
+        }
+    }
+
 }

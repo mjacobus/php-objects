@@ -306,4 +306,48 @@ class HashSugarTest extends HashTest
         $this->assertEquals('b', $hash->last());
     }
 
+    /**
+     * @covers PO\Hash::groupBy()
+     */
+    public function testGroupByWithCallableObject()
+    {
+        $foo = new Hash(array('name' => 'foo', 'age' => 20));
+        $bar = new Hash(array('name' => 'bar', 'age' => 20));
+        $baz = new Hash(array('name' => 'baz', 'age' => 21));
+
+        $hash = new Hash(array($foo, $bar, $baz));
+
+        $groups = $hash->groupBy(function ($element) {
+            return $element['age'];
+        });
+
+        $expected = array(
+            20 => array($foo, $bar),
+            21 => array($baz)
+        );
+
+        $this->assertEquals($expected, $groups->toArray());
+    }
+
+    /**
+     * @covers PO\Hash::groupBy()
+     */
+    public function testGroupByWithKey()
+    {
+        $foo = new Hash(array('name' => 'foo', 'age' => 20));
+        $bar = new Hash(array('name' => 'bar', 'age' => 20));
+        $baz = new Hash(array('name' => 'baz', 'age' => 21));
+
+        $hash = new Hash(array($foo, $bar, $baz));
+
+        $groups = $hash->groupBy('age');
+
+        $expected = array(
+            20 => array($foo, $bar),
+            21 => array($baz)
+        );
+
+        $this->assertEquals($expected, $groups->toArray());
+    }
+
 }

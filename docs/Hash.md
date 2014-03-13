@@ -92,7 +92,32 @@ $hash->fetch('bar') // throws InvalidArgumentException
 - ```flat_map```
 - ```flatten```
 - ```grep```
-- ```group_by```
+- ```group_by``` - Groups elements by a certain criteria
+
+```php
+$foo = new Hash(array('name' => 'foo', 'age' => 20));
+$bar = new Hash(array('name' => 'bar', 'age' => 20));
+$baz = new Hash(array('name' => 'baz', 'age' => 21));
+
+$hash = new Hash(array($foo, $bar, $baz));
+
+$groups = $hash->groupBy(function ($element) {
+    return $element['age'];
+})->toArray();
+
+/**
+array(
+    20 => array($foo, $bar),
+    21 => array($baz)
+);
+*/
+
+// The same result can be achieved with can be done with the index
+
+$groups = $hash->groupBy('age');
+
+```
+
 - ```hasKey```  - Check if key exists.
 
 ```php
