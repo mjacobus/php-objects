@@ -184,8 +184,8 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
         $hash = $this->create();
 
         $this->each(
-            function ($value) use ($callback, $hash) {
-                $hash[] = $callback($value);
+            function ($value, $key) use ($callback, $hash) {
+                $hash[] = $callback($value, $key);
             }
         );
 
@@ -344,7 +344,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * Group elements by the given criteria
      *
-     * @param mixed $criteria it can be either a function or a string,
+     * @param mixed $criteria it can be either a callable function or a string,
      *      representing a key of an element
      * @return Hash
      */
@@ -366,7 +366,49 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
         } else {
             return $this->groupBy(
                 function ($element) use ($criteria) {
-                   return $element[$criteria];
+                   return $element->fetch($criteria);
+                }
+            );
+        }
+    }
+
+    /**
+     * Sort elements by the given criteria
+     *
+     * @param mixed $criteria it can be either a callable function or a string,
+     *      representing a key of an element
+     * @return Hash
+     */
+    public function sortBy($criteria)
+    {
+        if (gettype($criteria)) {
+            $sorted = $this->create();
+            $groups = $this->groupBy($criteria);
+
+            $criterias = $this->map(
+                function ($element, $key) use ($criteria) {
+                    if (gettype($criteria) === 'object') {
+                        return $criteria($element, $key);
+                    } else {
+                        return $element[$criteria];
+                    }
+                }
+            )->toArray();
+
+            sort($criterias);
+            $criterias = array_unique($criterias);
+
+            foreach ($criterias as $key) {
+                foreach ($groups[$key] as $element) {
+                    $sorted[] = $element;
+                }
+            }
+
+            return $sorted;
+        } else {
+            return $this->sortBy(
+                function ($element) use ($criteria) {
+                   return $element->fetch($criteria);
                 }
             );
         }

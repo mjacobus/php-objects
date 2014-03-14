@@ -271,7 +271,7 @@ class HashSugarTest extends HashTest
         $expected = array('b', null);
 
         $this->assertEquals(
-            $expected, 
+            $expected,
             $hash->valuesAt(array('a', 'b'))->toArray()
         );
         $this->assertEquals($expected, $hash->valuesAt('a', 'b')->toArray());
@@ -350,6 +350,50 @@ class HashSugarTest extends HashTest
         );
 
         $this->assertEquals($expected, $groups->toArray());
+    }
+
+    /**
+     * @covers PO\Hash::sortBy()
+     */
+    public function testSortByWithCallableObject()
+    {
+        $first  = new Hash(array('order' => 1));
+        $second = new Hash(array('order' => 2));
+        $third  = new Hash(array('order' => 3));
+        $fourth = new Hash(array('order' => 3));
+        $fifth  = new Hash(array('order' => 5));
+
+        $hash   = new Hash(array($third, $fifth, $second, $first, $fourth));
+
+        $sorted = $hash->sortBy(
+            function ($element) {
+                return $element['order'];
+            }
+        );
+
+        $expected = array($first, $second, $third, $fourth, $fifth);
+
+        $this->assertEquals($expected, $sorted->toArray());
+    }
+
+    /**
+     * @covers PO\Hash::sortBy()
+     */
+    public function testSortByWithStringParam()
+    {
+        $first  = new Hash(array('order' => 1));
+        $second = new Hash(array('order' => 2));
+        $third  = new Hash(array('order' => 3));
+        $fourth = new Hash(array('order' => 3));
+        $fifth  = new Hash(array('order' => 5));
+
+        $hash = new Hash(array($third, $fifth, $second, $first, $fourth));
+
+        $sorted   = $hash->sortBy('order');
+
+        $expected = array($first, $second, $third, $fourth, $fifth);
+
+        $this->assertEquals($expected, $sorted->toArray());
     }
 
 }

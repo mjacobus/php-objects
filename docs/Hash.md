@@ -105,14 +105,13 @@ $groups = $hash->groupBy(function ($element) {
     return $element['age'];
 })->toArray();
 
-/**
+// Will return:
 array(
     20 => array($foo, $bar),
     21 => array($baz)
 );
-*/
 
-// The same result can be achieved with can be done with the index
+// The same result can be achieved with can be done by using the index
 
 $groups = $hash->groupBy('age');
 
@@ -221,7 +220,34 @@ $filtered = $hash->select(function($value, $key) {
 - ```size```
 - ```slice_before```
 - ```sort```
-- ```sort_by```
+- ```sortBy``` - Pass in a criteria and get and get a sorted hash
+
+```php
+
+$first  = new Hash(array('order' => 1));
+$second = new Hash(array('order' => 2));
+$third  = new Hash(array('order' => 3));
+$fourth = new Hash(array('order' => 3));
+$fifth  = new Hash(array('order' => 5));
+
+$hash   = new Hash(array($third, $fifth, $second, $first, $fourth));
+
+$sorted = $hash->sortBy(
+    function ($element) {
+        return $element['order'];
+    }
+)->toArray();
+
+// will return
+
+array($first, $second, $third, $fourth, $fifth);
+
+// the same could be acomplished by using the array key as criteria;
+
+$hash->sortBy('order');
+
+```
+
 - ```store```
 - ```take```
 - ```take_while```
