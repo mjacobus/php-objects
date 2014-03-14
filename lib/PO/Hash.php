@@ -350,26 +350,19 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function groupBy($criteria)
     {
-        if (gettype($criteria) === 'object') {
-            $groups = $this->create();
+        $criteria = $this->_factoryCallableCriteria($criteria);
+        $groups   = $this->create();
 
-            $this->each(
-                function ($element, $key) use ($groups, $criteria) {
-                    $groupName  = $criteria($element, $key);
-                    $elements   = $groups->offsetGet($groupName, array());
-                    $elements[] = $element;
-                    $groups[$groupName] = $elements;
-                }
-            );
+        $this->each(
+            function ($element, $key) use ($groups, $criteria) {
+                $groupName  = $criteria($element, $key);
+                $elements   = $groups->offsetGet($groupName, array());
+                $elements[] = $element;
+                $groups[$groupName] = $elements;
+            }
+        );
 
-            return $groups;
-        } else {
-            return $this->groupBy(
-                function ($element) use ($criteria) {
-                   return $element->fetch($criteria);
-                }
-            );
-        }
+        return $groups;
     }
 
     /**
@@ -381,37 +374,45 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function sortBy($criteria)
     {
-        if (gettype($criteria)) {
-            $sorted = $this->create();
-            $groups = $this->groupBy($criteria);
+        $criteria = $this->_factoryCallableCriteria($criteria);
+        $sorted   = $this->create();
+        $groups   = $this->groupBy($criteria);
 
-            $criterias = $this->map(
-                function ($element, $key) use ($criteria) {
-                    if (gettype($criteria) === 'object') {
-                        return $criteria($element, $key);
-                    } else {
-                        return $element[$criteria];
-                    }
-                }
-            )->toArray();
-
-            sort($criterias);
-            $criterias = array_unique($criterias);
-
-            foreach ($criterias as $key) {
-                foreach ($groups[$key] as $element) {
-                    $sorted[] = $element;
-                }
+        $criterias = $this->map(
+            function ($element, $key) use ($criteria) {
+                return $criteria($element, $key);
             }
+        )->toArray();
 
-            return $sorted;
-        } else {
-            return $this->sortBy(
-                function ($element) use ($criteria) {
-                   return $element->fetch($criteria);
-                }
-            );
+        sort($criterias);
+        $criterias = array_unique($criterias);
+
+        foreach ($criterias as $key) {
+            foreach ($groups[$key] as $element) {
+                $sorted[] = $element;
+            }
         }
+
+        return $sorted;
+    }
+
+    /**
+     * Get a function that returns something based on an element item
+     *
+     * @mixed $criteria either a callable function that returns a value or a
+     *    string that is an element key
+     *
+     * @return callable
+     */
+    private function _factoryCallableCriteria($criteria)
+    {
+        if (gettype($criteria) !== 'object') {
+            $criteria = function ($element, $key) use ($criteria) {
+                return $element->fetch($criteria);
+            };
+        }
+
+        return $criteria;
     }
 
 }
