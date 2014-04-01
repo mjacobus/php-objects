@@ -1,7 +1,5 @@
 #!/bin/bash
 
-phpunit --configuration=tests/phpunit.xml
-
 php --version | grep 5.5 > /dev/null
 
 if (( $? == 0 )); then
