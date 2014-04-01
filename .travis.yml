@@ -5,9 +5,15 @@ php:
   - 5.4
   - 5.3.3
   - hhvm
-before_script:
-  - ./bin/travis/before_script.sh
-script: ./bin/travis/script.sh
 branches:
   only:
     - master
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
+  - ./bin/travis/before_script.sh
+script:
+  - mkdir -p build/logs
+  ./bin/travis/script.sh
+after_script:
+  - php vendor/bin/coveralls
