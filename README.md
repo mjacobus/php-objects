@@ -3,6 +3,7 @@
 Primitive types behaving like grown up objects. Compatible with PHP 5.3.3+
 
 [![Build Status](https://travis-ci.org/mjacobus/php-objects.png?branch=master)](https://travis-ci.org/mjacobus/php-objects)
+[![Coverage Status](https://coveralls.io/repos/mjacobus/php-objects/badge.png)](https://coveralls.io/r/mjacobus/php-objects)
 
 Once you've written some ruby code and you HAVE to write php, you miss the
 hell out off ruby objects.
