@@ -141,7 +141,7 @@ class String extends Object
      * Returns part of a string
      *
      * @param integer start
-     * @param integer $end. if none is given, consideres the last char of the string
+     * @param integer $end defaults to the last char of the string
      * @return PO\String
      */
     public function at($start = null, $end = null)
