@@ -142,6 +142,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
             array('abcdef', 1, 3,    'bcd'),
             array('não avião',  1, null, 'ão avião'),
             array('não avião',  1, 7, 'ão aviã'),
+            array('não avião',  4, 5, 'avião'),
         );
     }
 

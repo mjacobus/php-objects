@@ -141,12 +141,12 @@ class String extends Object
      * Returns part of a string
      *
      * @param integer start
-     * @param integer $end defaults to the last char of the string
+     * @param integer $length the length of the string from the starting point
      * @return PO\String
      */
-    public function at($start = null, $end = null)
+    public function at($start = null, $length = null)
     {
-        return new String(mb_substr((string) $this, $start, $end, 'UTF-8'));
+        return new String(mb_substr((string) $this, $start, $length, 'UTF-8'));
     }
 
 }

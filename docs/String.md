@@ -10,7 +10,7 @@ use PO\Hash;
 The methods that have description are the ones that were impplemented. Fill free to write your implementation.
 
 - ```ascii_only?```
-- ```at``` - returns the string whitin a given range
+- ```at``` - returns the string whitin a given range. Works like substr
 ```php
 $string = new String('abcde');
 $string->at(0); // a
