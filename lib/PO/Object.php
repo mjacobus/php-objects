@@ -16,4 +16,13 @@ class Object
         return get_class($this);
     }
 
+    /**
+     * Object to string
+     * @return string
+     */
+    public function toString()
+    {
+        return (string) $this;
+    }
+
 }

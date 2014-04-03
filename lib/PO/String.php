@@ -149,4 +149,13 @@ class String extends Object
         return new String(mb_substr((string) $this, $start, $length, 'UTF-8'));
     }
 
+    /**
+     * Removes leading and trailing spaces
+     * @return PO\String
+     */
+    public function trim()
+    {
+        return new String(trim((string) $this));
+    }
+
 }
