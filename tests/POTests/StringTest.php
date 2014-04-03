@@ -134,4 +134,27 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($count, $string->count());
     }
 
+    public function atProvider()
+    {
+        return array(
+            array('abcdef', 0, null, 'abcdef'),
+            array('abcdef', 5, null, 'f'),
+            array('abcdef', 1, 3,    'bcd'),
+            array('não avião',  1, null, 'ão avião'),
+            array('não avião',  1, 7, 'ão aviã'),
+        );
+    }
+
+    /**
+     * @dataProvider atProvider
+     */
+    public function testAt($value, $start, $end, $expected)
+    {
+        $object = new String($value);
+        $result = $object->at($start, $end);
+
+        $this->assertInstanceOf('PO\String', $result);
+        $this->assertEquals($expected, (string) $result);
+    }
+
 }

@@ -10,6 +10,14 @@ use PO\Hash;
 The methods that have description are the ones that were impplemented. Fill free to write your implementation.
 
 - ```ascii_only?```
+- ```at``` - returns the string whitin a given range
+```php
+$string = new String('abcde');
+$string->at(0); // a
+$string->at(1); // b
+$string->at(1, 3); // bcd
+
+```
 - ```between?```
 - ```bytes```
 - ```bytesize```

@@ -137,4 +137,16 @@ class String extends Object
         return $this->count();
     }
 
+    /**
+     * Returns part of a string
+     *
+     * @param integer start
+     * @param integer $end. if none is given, consideres the last char of the string
+     * @return PO\String
+     */
+    public function at($start = null, $end = null)
+    {
+        return new String(mb_substr((string) $this, $start, $end, 'UTF-8'));
+    }
+
 }
