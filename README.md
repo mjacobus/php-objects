@@ -11,8 +11,8 @@ hell out off ruby objects.
 Well, not anymore. Hopefully.
 
 - [PO\Object](docs/Object.md)
-- [PO\Hash](docs/Hash.md)
-- [PO\String](docs/String.md)
+- [PO\Hash](docs/Hash.md) - There are tons of contribuitions you can make here
+- [PO\String](docs/String.md) - And here!
 
 
 ## Lincense
@@ -35,10 +35,20 @@ Well, not anymore. Hopefully.
 
 **Keep the code standard [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md), [Zend](http://framework.zend.com/wiki/display/ZFDEV2/Coding+Standards)**
 
-To check the code run:
+**Keep the code coverage [![Coverage Status](https://coveralls.io/repos/mjacobus/php-objects/badge.png)](https://coveralls.io/r/mjacobus/php-objects)**
+### How to run the tests:
+
+```bash
+phpunit --configuration tests/phpunit.xml
+```
+
+### To check the code standard run:
 
 ```bash
 phpcs --standard=Zend lib
-```
+phpcs --standard=Zend tests
 
-**Keep the code coverage**
+# alternatively
+
+./bin/travis/run_phpcs.sh
+```
