@@ -25,4 +25,17 @@ abstract class Object
         return (string) $this;
     }
 
+    /**
+     * Method missing callback
+     *
+     * @throws PO\NoMethodException
+     */
+    public function __call($method, $args)
+    {
+        $message = new String("Undefined method '");
+        $message->append($method)->append("' for ")->append($this->getClass());
+
+        throw new NoMethodException($message);
+    }
+
 }
