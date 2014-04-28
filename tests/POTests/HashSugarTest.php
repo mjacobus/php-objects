@@ -448,7 +448,7 @@ class HashSugarTest extends HashTest
 
         $expected = array($first, $second, $third, $fourth, $fifth);
 
-        $this->assertEquals($expected, $sorted->toArray());
+        $this->assertEquals($expected, $sorted->toArray(false));
     }
 
     /**
@@ -468,7 +468,26 @@ class HashSugarTest extends HashTest
 
         $expected = array($first, $second, $third, $fourth, $fifth);
 
-        $this->assertEquals($expected, $sorted->toArray());
+        $this->assertEquals($expected, $sorted->toArray(false));
+    }
+
+
+    /**
+     * @covers PO\Hash::toArray()
+     */
+    public function testToArray()
+    {
+        $params = array(
+            'foo' => array(
+                'bar' => array(
+                    'baz' => 'foobar'
+                )
+            )
+        );
+
+        $hash = Hash::create($params);
+
+        $this->assertEquals($params, $hash->toArray());
     }
 
 }

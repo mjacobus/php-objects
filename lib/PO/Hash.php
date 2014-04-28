@@ -33,11 +33,29 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     }
 
     /**
+     * Converts hash to array
+     * @param boolean $recursive defaults to true
      * @return array
      */
-    public function toArray()
+    public function toArray($recursive = true)
     {
-        return $this->_values;
+        $values = $this->_values;
+
+        if (!$recursive) {
+            return $values;
+        }
+
+        foreach ($values as $key => $value) {
+            if (gettype($value) === 'object') {
+                if ($value instanceof Hash) {
+                    $value = $value->toArray($recursive);
+                }
+            }
+
+            $values[$key] = $value;
+        }
+
+        return $values;
     }
 
     /**
