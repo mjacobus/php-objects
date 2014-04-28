@@ -28,4 +28,25 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
         $object->unexistingMethod();
     }
 
+    public function testSendWithNoArguments()
+    {
+        $this->markTestIncomplete('Implement Hash::include');
+        $object = new Dummy;
+        $this->assertEquals('example one', $object->send('methodOne'));
+    }
+
+    public function testGetMethods()
+    {
+        $object = new Dummy;
+
+        $methods = array('exampleOne', 'exampleTwo', 'exampleThree');
+
+        $objectMethods = $object->getMethods()->toArray();
+
+        foreach ($methods as $method) {
+            $this->assertTrue(in_array($method, $objectMethods));
+        }
+
+    }
+
 }
