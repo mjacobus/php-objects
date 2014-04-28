@@ -133,7 +133,7 @@ $groups = $hash->groupBy('age');
 $hash->hasKey('foo') // true
 ```
 
-- ```has_value```?
+- ```hasValue``` - Returns true if hash includes the given element
 - ```include```?
 - ```index```
 - ```inject```

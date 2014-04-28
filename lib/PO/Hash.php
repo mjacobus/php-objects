@@ -443,6 +443,17 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     }
 
     /**
+     * Tells if the object includes the given element in the first
+     * level of the collection. Strict mode. compares type
+     *
+     * @return boolean
+     */
+    public function hasValue($value)
+    {
+        return in_array($value, $this->toArray(false), true);
+    }
+
+    /**
      * Get a function that returns something based on an element item
      *
      * @mixed $criteria either a callable function that returns a value or a
