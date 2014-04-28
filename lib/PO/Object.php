@@ -26,11 +26,22 @@ abstract class Object
     }
 
     /**
+     * Alias to missingMethod()
+     *
+     * @see PO\Object::methodMissing()
+     * @throws PO\NoMethodException
+     */
+    public function __call($method, $args)
+    {
+        return $this->methodMissing($method, $args);
+    }
+
+    /**
      * Method missing callback
      *
      * @throws PO\NoMethodException
      */
-    public function __call($method, $args)
+    public function methodMissing($method, $args)
     {
         $message = new String("Undefined method '");
         $message->append($method)->append("' for ")->append($this->getClass());
