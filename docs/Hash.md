@@ -82,7 +82,17 @@ $hash = Hash::create(['foo' => 'bar']);
 
 $hash->fetch('foo') // bar
 
+$hash->fetch('bar', 'foo') // foo
+
 $hash->fetch('bar') // throws InvalidArgumentException
+
+$hash->fetch('foo', function ($value) {
+    return "Value is '$value'";
+}); // Value is 'bar'
+
+$hash->fetch('foo', function () {
+    return "No value";
+}); // No value
 ```
 
 - ```find```
