@@ -175,6 +175,37 @@ class HashSugarTest extends HashTest
     }
 
     /**
+     * @covers PO\Hash::create()
+     */
+    public function testFactoryCanRecursivelyInstantiateHashes()
+    {
+        $params = array(
+            'user' => array(
+                'city' => array(
+                    'name' => 'Novo Hamburgo',
+                    'state' => array(
+                        'name' => 'RS'
+                    )
+                )
+            )
+        );
+
+        $hash = \Dummy\Hash::create($params);
+
+        $this->assertEquals('Novo Hamburgo', $hash['user']['city']['name']);
+        $this->assertEquals('RS', $hash['user']['city']['state']['name']);
+
+        $hash = $hash->fetch('user');
+        $this->assertInstanceOf('\Dummy\Hash', $hash);
+
+        $hash = $hash->fetch('city');
+        $this->assertInstanceOf('\Dummy\Hash', $hash);
+
+        $hash = $hash->fetch('state');
+        $this->assertInstanceOf('\Dummy\Hash', $hash);
+    }
+
+    /**
      * @covers PO\Hash::isEmpty()
      */
     public function testIsEmpty()

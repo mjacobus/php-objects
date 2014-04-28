@@ -3,7 +3,6 @@
 namespace PO;
 use InvalidArgumentException;
 
-
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
@@ -17,9 +16,19 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
 
     /**
      * @param array $values The values to initially set to the Hash
+     * @param boolean $recursive Whether to recursively transform arrays into
+     *                           Objects
      */
-    public function __construct(array $values = array())
+    public function __construct(array $values = array(), $recursive = true)
     {
+        if ($recursive) {
+            foreach ($values as $key => $value) {
+                if (is_array($value)) {
+                    $values[$key] = $this->create($value, $recursive);
+                }
+            }
+        }
+
         $this->_values = $values;
     }
 
@@ -167,12 +176,14 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      * A factory for Hash
      *
      * @param array $params the params to create a new object
+     * @param boolean $recursive whether or not to recursive change arrays into
+     *                           objects
      * @return Hash
      */
-    public static function create(array $params = array())
+    public static function create(array $params = array(), $recursive = true)
     {
         $class = get_called_class();
-        return new $class($params);
+        return new $class($params, $recursive);
     }
 
     /**
