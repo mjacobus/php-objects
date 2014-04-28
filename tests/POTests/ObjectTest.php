@@ -19,7 +19,8 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \PO\NoMethodException
-     * @expectedExceptionMessage Undefined method 'unexistingMethod' for Dummy\Object
+     * @expectedExceptionMessage \
+     *    Undefined method 'unexistingMethod' for Dummy\Object
      */
     public function testItThrowsExceptionOnMethodMissing()
     {
