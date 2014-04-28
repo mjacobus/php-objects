@@ -5,7 +5,7 @@ namespace PO;
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
-class Object
+abstract class Object
 {
     /**
      * Get the class name of the object
