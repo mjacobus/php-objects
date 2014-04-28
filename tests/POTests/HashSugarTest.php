@@ -309,7 +309,8 @@ class HashSugarTest extends HashTest
     {
         $hash = Hash::create(array('foo' => 'bar'));
 
-        $value = $hash->fetch('foo', 
+        $value = $hash->fetch(
+            'foo',
             function ($element) {
                 return "Value is '$element'";
             }
@@ -325,7 +326,8 @@ class HashSugarTest extends HashTest
     {
         $hash = Hash::create();
 
-        $value = $hash->fetch('foo', 
+        $value = $hash->fetch(
+            'foo',
             function ($element) {
                 return "Not set";
             }
