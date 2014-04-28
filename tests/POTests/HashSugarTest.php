@@ -258,7 +258,49 @@ class HashSugarTest extends HashTest
     {
         $hash = Hash::create(array('foo' => 'bar'));
         $this->assertEquals('bar', $hash->fetch('foo'));
+        $this->assertEquals('bar', $hash->fetch('foo', 'default'));
         $hash->fetch('bar');
+    }
+
+    /**
+     * @covers PO\Hash::fetch()
+     */
+    public function testFetchReturnsDefaultValue()
+    {
+        $hash = Hash::create();
+        $this->assertEquals('bar', $hash->fetch('foo', 'bar'));
+    }
+
+    /**
+     * @covers PO\Hash::fetch()
+     */
+    public function testFetchInjectsValueToCallableCallableFunction()
+    {
+        $hash = Hash::create(array('foo' => 'bar'));
+
+        $value = $hash->fetch('foo', 
+            function ($element) {
+                return "Value is '$element'";
+            }
+        );
+
+        $this->assertEquals("Value is 'bar'", $value);
+    }
+
+    /**
+     * @covers PO\Hash::fetch()
+     */
+    public function testFetchAcceptsCallableFunctionAsFallbackRotine()
+    {
+        $hash = Hash::create();
+
+        $value = $hash->fetch('foo', 
+            function ($element) {
+                return "Not set";
+            }
+        );
+
+        $this->assertEquals("Not set", $value);
     }
 
     /**

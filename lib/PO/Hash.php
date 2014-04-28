@@ -1,6 +1,8 @@
 <?php
 
 namespace PO;
+use InvalidArgumentException;
+
 
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
@@ -269,16 +271,31 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      * Get the value by the key. Throws exception when key is not set
      *
      * @param string $key
+     * @param mixed $default either value or callable function
      * @return mixed the value for the given key
      * @throws InvalidArgumentException
      */
-    public function fetch($key)
+    public function fetch($key, $default = null)
     {
         if ($this->hasKey($key)) {
-            return $this[$key];
+
+            $value = $this[$key];
+
+            if (is_callable($default)) {
+                return $default($value);
+            }
+
+            return $value;
+
+        } elseif ($default !== null) {
+
+            if (is_callable($default)) {
+                return $default(null);
+            }
+            return $default;
         }
 
-        throw new \InvalidArgumentException("Invalid key '$key'");
+        throw new InvalidArgumentException("Invalid key '$key'");
     }
 
     /**
