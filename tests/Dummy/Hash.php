@@ -6,4 +6,3 @@ class Hash extends \PO\Hash
 {
 
 }
-

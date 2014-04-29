@@ -1,6 +1,7 @@
 <?php
 
 namespace Dummy;
+
 use PO\String;
 
 class Object extends \PO\Object
@@ -37,5 +38,4 @@ class Object extends \PO\Object
     private function privateMethod()
     {
     }
-
 }

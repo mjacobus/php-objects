@@ -47,7 +47,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
         $return = $object->send('exampleThree', 'a', 'b', 'c');
 
         $this->assertEquals(
-            'argumets: a: a, b: b, c: c', 
+            'argumets: a: a, b: b, c: c',
             $return
         );
     }
@@ -72,5 +72,4 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
         }
 
     }
-
 }

@@ -24,5 +24,4 @@ class Type
     {
         return (string) $var;
     }
-
 }

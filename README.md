@@ -33,7 +33,7 @@ Well, not anymore. Hopefully.
 
 **Do not forget to write tests**
 
-**Keep the code standard [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md), [Zend](http://framework.zend.com/wiki/display/ZFDEV2/Coding+Standards)**
+**Keep the code standard [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
 
 **Keep the code coverage [![Coverage Status](https://coveralls.io/repos/mjacobus/php-objects/badge.png)](https://coveralls.io/r/mjacobus/php-objects)**
 ### How to run the tests:
@@ -45,8 +45,8 @@ phpunit --configuration tests/phpunit.xml
 ### To check the code standard run:
 
 ```bash
-phpcs --standard=Zend lib
-phpcs --standard=Zend tests
+phpcs --standard=PSR2 lib
+phpcs --standard=PSR2 tests
 
 # alternatively
 

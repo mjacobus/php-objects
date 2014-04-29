@@ -29,7 +29,7 @@ class HashSugarTest extends HashTest
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
         $filtered = $hash->reject(
-            function($value, $key) {
+            function ($value, $key) {
                 return $value === 'barfoo';
             }
         );
@@ -46,7 +46,7 @@ class HashSugarTest extends HashTest
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
         $filtered = $hash->reject(
-            function($value, $key) {
+            function ($value, $key) {
                 return $key === 'bar';
             }
         );
@@ -63,7 +63,7 @@ class HashSugarTest extends HashTest
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
         $filtered = $hash->select(
-            function($value, $key) {
+            function ($value, $key) {
                 return $value !== 'barfoo';
             }
         );
@@ -80,7 +80,7 @@ class HashSugarTest extends HashTest
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
         $filtered = $hash->select(
-            function($value, $key) {
+            function ($value, $key) {
                 return $key === 'foo';
             }
         );
@@ -97,7 +97,7 @@ class HashSugarTest extends HashTest
         $hash = new Hash(array('a' => 'b', 'c' => 'd'));
 
         $mapped = $hash->map(
-            function($value) {
+            function ($value) {
                 return $value;
             }
         );
@@ -117,11 +117,11 @@ class HashSugarTest extends HashTest
         $array = new Hash;
 
         $hash->each(
-            function($value) use ($array) {
+            function ($value) use ($array) {
                 $array[] = $value;
             }
         )->each(
-            function($value) use ($array) {
+            function ($value) use ($array) {
                 $array[] = $value;
             }
         );
@@ -141,12 +141,12 @@ class HashSugarTest extends HashTest
         $array = new Hash;
 
         $hash->each(
-            function($value, $key) use ($array) {
+            function ($value, $key) use ($array) {
                 $array[] = $key;
                 $array[] = $value;
             }
         )->each(
-            function($value, $key) use ($array) {
+            function ($value, $key) use ($array) {
                 $array[] = $key;
                 $array[] = $value;
             }
@@ -305,7 +305,7 @@ class HashSugarTest extends HashTest
     /**
      * @covers PO\Hash::fetch()
      */
-    public function testFetchInjectsValueToCallableCallableFunction()
+    public function testFetchInjectsValueToCallableCallablefunction ()
     {
         $hash = Hash::create(array('foo' => 'bar'));
 
@@ -511,5 +511,4 @@ class HashSugarTest extends HashTest
         $this->assertFalse($hash->hasValue('a'));
         $this->assertFalse($hash->hasValue($baz));
     }
-
 }

@@ -8,14 +8,14 @@ namespace PO;
 class String extends Object
 {
 
-    protected $_content;
+    protected $content;
 
     /**
      * @param string $string
      */
     public function __construct($string = '')
     {
-        $this->_content = (string) $string;
+        $this->content = (string) $string;
     }
 
     /**
@@ -24,7 +24,7 @@ class String extends Object
      */
     public function append($string)
     {
-        $this->_content .= $string;
+        $this->content .= $string;
         return $this;
     }
 
@@ -33,7 +33,7 @@ class String extends Object
      */
     public function __toString()
     {
-        return $this->_content;
+        return $this->content;
     }
 
     /**
@@ -157,5 +157,4 @@ class String extends Object
     {
         return new String(trim((string) $this));
     }
-
 }

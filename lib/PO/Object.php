@@ -48,13 +48,13 @@ abstract class Object
 
     /**
      * Dinamicaly calls method
-     * @see PO\Object::__send__
+     * @see PO\Object::__send
      * @return mixed
      * @throws PO\NoMethodError
      */
     public function send()
     {
-        return call_user_func_array(array($this, '__send__'), func_get_args());
+        return call_user_func_array(array($this, '__send'), func_get_args());
     }
 
     /**
@@ -62,12 +62,12 @@ abstract class Object
      * @return mixed
      * @throws PO\NoMethodError
      */
-    public final function __send__()
+    final public function __send()
     {
         $args   = func_get_args();
         $method = array_shift($args);
 
-        if ($this->__respondTo__($method)) {
+        if ($this->__respondTo($method)) {
             return call_user_func_array(array($this, $method), $args);
         }
 
@@ -80,7 +80,7 @@ abstract class Object
      * Informs if the given method exists
      * @return boolean
      */
-    public final function __respondTo__($method)
+    final public function __respondTo($method)
     {
         return $this->getMethods()->hasValue($method);
     }
@@ -91,18 +91,18 @@ abstract class Object
      */
     public function respondTo($method)
     {
-        return $this->__respondTo__($method);
+        return $this->__respondTo($method);
     }
 
     /**
      * Get the methods that the object responds to
-     * @see PO\Object::__methods__()
+     * @see PO\Object::__getMethods()
      *
      * @return PO\Hash.
      */
     public function getMethods()
     {
-        return $this->__getMethods__();
+        return $this->__getMethods();
     }
 
     /**
@@ -110,7 +110,7 @@ abstract class Object
      *
      * @return PO\Hash.
      */
-    public final function __getMethods__()
+    final public function __getMethods()
     {
         $methods = get_class_methods($this);
         $hash = new Hash($methods);

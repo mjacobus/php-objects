@@ -70,5 +70,4 @@ class HashAccessTest extends HashTest
         $hash = new Hash();
         Dummy\Type::requireArray($hash);
     }
-
 }

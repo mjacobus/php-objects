@@ -163,5 +163,4 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $object = new String('  abc ');
         $this->assertEquals('abc', $object->trim()->toString());
     }
-
 }

@@ -21,5 +21,5 @@ $object->getClass(); // MyClass
 - ```toString``` - the __toString() method
 
 ## Final methods
-- ```__respondTo__($method)``` - if implements method
-- ```__send__($method[, $arg1[, $arg2]])``` - dynamically calls method
+- ```__respondTo($method)``` - if implements method
+- ```__send($method[, $arg1[, $arg2]])``` - dynamically calls method

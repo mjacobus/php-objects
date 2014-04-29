@@ -15,5 +15,4 @@ class HashTest extends \PHPUnit_Framework_TestCase
         // $object = new Hash;
         $this->assertInstanceOf('PO\Hash', $object);
     }
-
 }

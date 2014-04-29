@@ -2,25 +2,29 @@
 
 php --version | grep 5.5 > /dev/null
 
+CODE=0
+
 if (( $? == 0 )); then
   echo ""
   echo -en "Checking lib code standard..."
-  phpcs --standard=Zend lib
+  phpcs --standard=PSR2 lib
 
   if (( $? == 0 )); then
     echo -e '\E[32m'"\033[1mPASSED!\033[0m" # Green
   else
     echo   -e '\E[31;47m'"\033[1mFAILED!\033[0m"   # Red
-    exit 1
+    CODE=1
   fi
 
   echo -en "Checking tests code standard..."
-  phpcs --standard=Zend tests
+  phpcs --standard=PSR2 tests
 
   if (( $? == 0 )); then
     echo -e '\E[32m'"\033[1mPASSED!\033[0m" # Green
   else
     echo   -e '\E[31;47m'"\033[1mFAILED!\033[0m"   # Red
-    exit 1
+    CODE=1
   fi
 fi
+
+exit $CODE

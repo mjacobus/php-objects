@@ -1,6 +1,7 @@
 <?php
 
 namespace PO;
+
 use InvalidArgumentException;
 
 /**
@@ -12,7 +13,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * @var array
      */
-    protected $_values = array();
+    protected $values = array();
 
     /**
      * @param array $values The values to initially set to the Hash
@@ -29,7 +30,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
             }
         }
 
-        $this->_values = $values;
+        $this->values = $values;
     }
 
     /**
@@ -39,7 +40,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function toArray($recursive = true)
     {
-        $values = $this->_values;
+        $values = $this->values;
 
         if (!$recursive) {
             return $values;
@@ -63,7 +64,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function offsetGet($key, $default = null)
     {
-        return isset($this->_values[$key]) ? $this->_values[$key] : $default;
+        return isset($this->values[$key]) ? $this->values[$key] : $default;
     }
 
     /**
@@ -72,9 +73,9 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     public function offsetSet($key, $value)
     {
         if (is_null($key)) {
-            $this->_values[] = $value;
+            $this->values[] = $value;
         } else {
-            $this->_values[$key] = $value;
+            $this->values[$key] = $value;
         }
 
         return $this;
@@ -85,7 +86,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function offsetExists($key)
     {
-        return isset($this->_values[$key]);
+        return isset($this->values[$key]);
     }
 
     /**
@@ -93,7 +94,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function offsetUnset($key)
     {
-        unset($this->_values[$key]);
+        unset($this->values[$key]);
         return $this;
     }
 
@@ -102,7 +103,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function current()
     {
-        return current($this->_values);
+        return current($this->values);
     }
 
     /**
@@ -110,7 +111,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function next()
     {
-        return next($this->_values);
+        return next($this->values);
     }
 
     /**
@@ -118,7 +119,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function key()
     {
-        return key($this->_values);
+        return key($this->values);
     }
 
     /**
@@ -126,7 +127,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function rewind()
     {
-        reset($this->_values);
+        reset($this->values);
         return $this;
     }
 
@@ -135,7 +136,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function valid()
     {
-        $key = key($this->_values);
+        $key = key($this->values);
         return ($key !== null && $key !== false);
     }
 
@@ -344,7 +345,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
         $args = func_get_args();
 
         if (is_array($args[0])) {
-           $args = $args[0];
+            $args = $args[0];
         }
 
         $hash = $this->create();
@@ -396,7 +397,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function groupBy($criteria)
     {
-        $criteria = $this->_factoryCallableCriteria($criteria);
+        $criteria = $this->factoryCallableCriteria($criteria);
         $groups   = $this->create();
 
         $this->each(
@@ -420,7 +421,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function sortBy($criteria)
     {
-        $criteria = $this->_factoryCallableCriteria($criteria);
+        $criteria = $this->factoryCallableCriteria($criteria);
         $sorted   = $this->create();
         $groups   = $this->groupBy($criteria);
 
@@ -461,7 +462,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      *
      * @return callable
      */
-    private function _factoryCallableCriteria($criteria)
+    private function factoryCallableCriteria($criteria)
     {
         if (gettype($criteria) !== 'object') {
             $criteria = function ($element, $key) use ($criteria) {
@@ -471,5 +472,4 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
 
         return $criteria;
     }
-
 }
