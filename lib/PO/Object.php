@@ -46,17 +46,41 @@ abstract class Object
         return $this->send($method, $args);
     }
 
+    /**
+     * Dinamicaly calls method
+     * @see PO\Object::__send__
+     * @return mixed
+     * @throws PO\NoMethodError
+     */
     public function send($method, $args = null)
     {
         return $this->__send__($method, $args);
     }
 
+    /**
+     * Dinamicaly calls method
+     * @return mixed
+     * @throws PO\NoMethodError
+     */
     public function __send__($method, $args = null)
     {
         $message = new String("Undefined method '");
         $message->append($method)->append("' for ")->append($this->getClass());
 
+        if ($this->methodExists($method)) {
+            return 'call method please';
+        }
+
         throw new NoMethodException($message);
+    }
+
+    /**
+     * Informs if the given method exists
+     * @return boolean
+     */
+    public function methodExists($method)
+    {
+        return $this->getMethods()->hasValue($method);
     }
 
     /**

@@ -30,9 +30,16 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
 
     public function testSendWithNoArguments()
     {
-        $this->markTestIncomplete('Implement Hash::include');
+        $this->markTestIncomplete();
         $object = new Dummy;
         $this->assertEquals('example one', $object->send('methodOne'));
+    }
+
+    public function testMethodExists()
+    {
+        $object = new Dummy;
+        $this->assertTrue($object->methodExists('exampleOne'));
+        $this->assertFalse($object->methodExists('undefinedMethod'));
     }
 
     public function testGetMethods()
