@@ -30,9 +30,26 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
 
     public function testSendWithNoArguments()
     {
-        $this->markTestIncomplete();
         $object = new Dummy;
-        $this->assertEquals('example one', $object->send('methodOne'));
+        $this->assertEquals('example one', $object->send('exampleOne'));
+    }
+
+    public function testSendWithOneArgument()
+    {
+        $object = new Dummy;
+        $return = $object->send('exampleTwo', 'abc');
+        $this->assertEquals('argumets: abc', $return);
+    }
+
+    public function testSendWithSeveralArgument()
+    {
+        $object = new Dummy;
+        $return = $object->send('exampleThree', 'a', 'b', 'c');
+
+        $this->assertEquals(
+            'argumets: a: a, b: b, c: c', 
+            $return
+        );
     }
 
     public function testRespondTo()

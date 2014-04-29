@@ -52,9 +52,9 @@ abstract class Object
      * @return mixed
      * @throws PO\NoMethodError
      */
-    public function send($method, $args = null)
+    public function send()
     {
-        return $this->__send__($method, $args);
+        return call_user_func_array(array($this, '__send__'), func_get_args());
     }
 
     /**
@@ -62,15 +62,17 @@ abstract class Object
      * @return mixed
      * @throws PO\NoMethodError
      */
-    public function __send__($method, $args = null)
+    public final function __send__()
     {
-        $message = new String("Undefined method '");
-        $message->append($method)->append("' for ")->append($this->getClass());
+        $args   = func_get_args();
+        $method = array_shift($args);
 
         if ($this->__respondTo__($method)) {
-            return 'call method please';
+            return call_user_func_array(array($this, $method), $args);
         }
 
+        $message = new String("Undefined method '");
+        $message->append($method)->append("' for ")->append($this->getClass());
         throw new NoMethodException($message);
     }
 
@@ -78,7 +80,7 @@ abstract class Object
      * Informs if the given method exists
      * @return boolean
      */
-    private function __respondTo__($method)
+    public final function __respondTo__($method)
     {
         return $this->getMethods()->hasValue($method);
     }
@@ -108,7 +110,7 @@ abstract class Object
      *
      * @return PO\Hash.
      */
-    private function __getMethods__()
+    public final function __getMethods__()
     {
         $methods = get_class_methods($this);
         $hash = new Hash($methods);

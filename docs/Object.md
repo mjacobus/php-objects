@@ -10,7 +10,16 @@ class MyClass extends Object {}
 $object = new MyClass;
 ```
 
-- getClass
+- ```getClass```
 ```php
 $object->getClass(); // MyClass
 ```
+
+- ```methodMissing``` - method to be overriden in order to implement __call
+- ```respondTo``` - refer to __respondTo__
+- ```send``` - refer to __send__
+- ```toString``` - the __toString() method
+
+## Final methods
+- ```__respondTo__($method)``` - if implements method
+- ```__send__($method[, $arg1[, $arg2]])``` - dynamically calls method

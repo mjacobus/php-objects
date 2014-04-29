@@ -13,7 +13,7 @@ class Object extends \PO\Object
 
     public function exampleTwo($argument)
     {
-        return 'argumets:' . $argument;
+        return 'argumets: ' . $argument;
     }
 
     public function exampleThree($a, $b = null, $c = null)
