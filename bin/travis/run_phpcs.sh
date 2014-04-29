@@ -4,15 +4,16 @@ CODE=0
 
 php --version | grep 5.5 > /dev/null
 
+
 if (( $? == 0 )); then
   echo ""
   echo -en "Checking lib code standard..."
   phpcs --standard=PSR2 lib
 
   if (( $? == 0 )); then
-    echo -e '\E[32m'"\033[1mPASSED!\033[0m" # Green
+    echo -e '\E[32m'"\033[1m\tPASSED!\033[0m" # Green
   else
-    echo   -e '\E[31;47m'"\033[1mFAILED!\033[0m"   # Red
+    echo   -e '\E[31;47m'"\033[1m\tFAILED!\033[0m"   # Red
     CODE=1
   fi
 
@@ -20,9 +21,9 @@ if (( $? == 0 )); then
   phpcs --standard=PSR2 tests
 
   if (( $? == 0 )); then
-    echo -e '\E[32m'"\033[1mPASSED!\033[0m" # Green
+    echo -e '\E[32m'"\033[1m\tPASSED!\033[0m" # Green
   else
-    echo   -e '\E[31;47m'"\033[1mFAILED!\033[0m"   # Red
+    echo   -e '\E[31;47m'"\033[1m\tFAILED!\033[0m"   # Red
     CODE=1
   fi
 fi
