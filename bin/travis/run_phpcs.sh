@@ -1,8 +1,8 @@
 #!/bin/bash
 
-php --version | grep 5.5 > /dev/null
-
 CODE=0
+
+php --version | grep 5.5 > /dev/null
 
 if (( $? == 0 )); then
   echo ""
