@@ -35,11 +35,11 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('example one', $object->send('methodOne'));
     }
 
-    public function testMethodExists()
+    public function testRespondTo()
     {
         $object = new Dummy;
-        $this->assertTrue($object->methodExists('exampleOne'));
-        $this->assertFalse($object->methodExists('undefinedMethod'));
+        $this->assertTrue($object->respondTo('exampleOne'));
+        $this->assertFalse($object->respondTo('undefinedMethod'));
     }
 
     public function testGetMethods()

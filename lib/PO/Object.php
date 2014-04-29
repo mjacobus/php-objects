@@ -67,7 +67,7 @@ abstract class Object
         $message = new String("Undefined method '");
         $message->append($method)->append("' for ")->append($this->getClass());
 
-        if ($this->methodExists($method)) {
+        if ($this->__respondTo__($method)) {
             return 'call method please';
         }
 
@@ -78,9 +78,18 @@ abstract class Object
      * Informs if the given method exists
      * @return boolean
      */
-    public function methodExists($method)
+    private function __respondTo__($method)
     {
         return $this->getMethods()->hasValue($method);
+    }
+
+    /**
+     * Informs if the given method exists
+     * @return boolean
+     */
+    public function respondTo($method)
+    {
+        return $this->__respondTo__($method);
     }
 
     /**
@@ -99,7 +108,7 @@ abstract class Object
      *
      * @return PO\Hash.
      */
-    public function __getMethods__()
+    private function __getMethods__()
     {
         $methods = get_class_methods($this);
         $hash = new Hash($methods);
