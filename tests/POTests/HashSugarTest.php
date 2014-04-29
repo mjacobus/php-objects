@@ -28,11 +28,9 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->reject(
-            function ($value, $key) {
-                return $value === 'barfoo';
-            }
-        );
+        $filtered = $hash->reject(function ($value, $key) {
+            return $value === 'barfoo';
+        });
 
         $this->assertEquals(array('foo' => 'foobar'), $filtered->toArray());
         $this->assertHash($filtered);
@@ -45,11 +43,9 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->reject(
-            function ($value, $key) {
-                return $key === 'bar';
-            }
-        );
+        $filtered = $hash->reject(function ($value, $key) {
+            return $key === 'bar';
+        });
 
         $this->assertEquals(array('foo' => 'foobar'), $filtered->toArray());
         $this->assertHash($filtered);
@@ -62,11 +58,9 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->select(
-            function ($value, $key) {
-                return $value !== 'barfoo';
-            }
-        );
+        $filtered = $hash->select(function ($value, $key) {
+            return $value !== 'barfoo';
+        });
 
         $this->assertEquals(array('foo' => 'foobar'), $filtered->toArray());
         $this->assertHash($filtered);
@@ -79,11 +73,9 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('foo' => 'foobar', 'bar' => 'barfoo'));
 
-        $filtered = $hash->select(
-            function ($value, $key) {
-                return $key === 'foo';
-            }
-        );
+        $filtered = $hash->select(function ($value, $key) {
+            return $key === 'foo';
+        });
 
         $this->assertEquals(array('foo' => 'foobar'), $filtered->toArray());
         $this->assertHash($filtered);
@@ -96,11 +88,9 @@ class HashSugarTest extends HashTest
     {
         $hash = new Hash(array('a' => 'b', 'c' => 'd'));
 
-        $mapped = $hash->map(
-            function ($value) {
-                return $value;
-            }
-        );
+        $mapped = $hash->map(function ($value) {
+            return $value;
+        });
 
         $expectation = array('b', 'd');
 
@@ -116,15 +106,11 @@ class HashSugarTest extends HashTest
 
         $array = new Hash;
 
-        $hash->each(
-            function ($value) use ($array) {
-                $array[] = $value;
-            }
-        )->each(
-            function ($value) use ($array) {
-                $array[] = $value;
-            }
-        );
+        $hash->each(function ($value) use ($array) {
+            $array[] = $value;
+        })->each(function ($value) use ($array) {
+            $array[] = $value;
+        });
 
         $expectation = array( 'b', 'd', 'b', 'd');
 
@@ -140,17 +126,13 @@ class HashSugarTest extends HashTest
 
         $array = new Hash;
 
-        $hash->each(
-            function ($value, $key) use ($array) {
-                $array[] = $key;
-                $array[] = $value;
-            }
-        )->each(
-            function ($value, $key) use ($array) {
-                $array[] = $key;
-                $array[] = $value;
-            }
-        );
+        $hash->each(function ($value, $key) use ($array) {
+            $array[] = $key;
+            $array[] = $value;
+        })->each(function ($value, $key) use ($array) {
+            $array[] = $key;
+            $array[] = $value;
+        });
 
         $expectation = array(
             'a', 'b', 'c', 'd',
@@ -309,12 +291,9 @@ class HashSugarTest extends HashTest
     {
         $hash = Hash::create(array('foo' => 'bar'));
 
-        $value = $hash->fetch(
-            'foo',
-            function ($element) {
-                return "Value is '$element'";
-            }
-        );
+        $value = $hash->fetch('foo', function ($element) {
+            return "Value is '$element'";
+        });
 
         $this->assertEquals("Value is 'bar'", $value);
     }
@@ -326,12 +305,9 @@ class HashSugarTest extends HashTest
     {
         $hash = Hash::create();
 
-        $value = $hash->fetch(
-            'foo',
-            function ($element) {
-                return "Not set";
-            }
-        );
+        $value = $hash->fetch('foo', function ($element) {
+            return "Not set";
+        });
 
         $this->assertEquals("Not set", $value);
     }
@@ -392,11 +368,9 @@ class HashSugarTest extends HashTest
 
         $hash = new Hash(array($foo, $bar, $baz));
 
-        $groups = $hash->groupBy(
-            function ($element) {
-                return $element['age'];
-            }
-        );
+        $groups = $hash->groupBy(function ($element) {
+            return $element['age'];
+        });
 
         $expected = array(
             20 => array($foo, $bar),
@@ -440,11 +414,9 @@ class HashSugarTest extends HashTest
 
         $hash   = new Hash(array($third, $fifth, $second, $first, $fourth));
 
-        $sorted = $hash->sortBy(
-            function ($element) {
-                return $element['order'];
-            }
-        );
+        $sorted = $hash->sortBy(function ($element) {
+            return $element['order'];
+        });
 
         $expected = array($first, $second, $third, $fourth, $fifth);
 

@@ -146,11 +146,9 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function compact()
     {
-        return $this->reject(
-            function ($value, $key) {
-                return $value === '' || $value === null;
-            }
-        );
+        return $this->reject(function ($value, $key) {
+            return $value === '' || $value === null;
+        });
     }
 
     /**
@@ -215,11 +213,9 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     {
         $hash = $this->create();
 
-        $this->each(
-            function ($value, $key) use ($callback, $hash) {
-                $hash[] = $callback($value, $key);
-            }
-        );
+        $this->each(function ($value, $key) use ($callback, $hash) {
+            $hash[] = $callback($value, $key);
+        });
 
         return $hash;
     }
@@ -400,14 +396,12 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
         $criteria = $this->factoryCallableCriteria($criteria);
         $groups   = $this->create();
 
-        $this->each(
-            function ($element, $key) use ($groups, $criteria) {
-                $groupName  = $criteria($element, $key);
-                $elements   = $groups->offsetGet($groupName, array());
-                $elements[] = $element;
-                $groups[$groupName] = $elements;
-            }
-        );
+        $this->each(function ($element, $key) use ($groups, $criteria) {
+            $groupName  = $criteria($element, $key);
+            $elements   = $groups->offsetGet($groupName, array());
+            $elements[] = $element;
+            $groups[$groupName] = $elements;
+        });
 
         return $groups;
     }
@@ -425,11 +419,9 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
         $sorted   = $this->create();
         $groups   = $this->groupBy($criteria);
 
-        $criterias = $this->map(
-            function ($element, $key) use ($criteria) {
-                return $criteria($element, $key);
-            }
-        )->toArray();
+        $criterias = $this->map(function ($element, $key) use ($criteria) {
+            return $criteria($element, $key);
+        })->toArray();
 
         sort($criterias);
         $criterias = array_unique($criterias);

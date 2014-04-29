@@ -57,7 +57,7 @@ $hash = new Hash(array('a' => 'b', 'c' => 'd'));
 
 $array = new Hash;
 
-$hash->each(function($value, $key) use ($array) {
+$hash->each(function ($value, $key) use ($array) {
     $array[] = $key;
     $array[] = $value;
 });
@@ -170,7 +170,7 @@ $hash = new Hash(array(
     'c' => 'd'
 ));
 
-$mapped = $hash->map(function($value, $key) {
+$mapped = $hash->map(function ($value, $key) {
     return $key . $value;
 })->toArray();
 
@@ -200,7 +200,7 @@ $hash = new Hash(array(
   'bar' => 'barfoo'
 ));
 
-$filtered = $hash->reject(function($value, $key) {
+$filtered = $hash->reject(function ($value, $key) {
     return $value === 'barfoo';
 })->toArray();
 
@@ -218,7 +218,7 @@ $hash = new Hash(array(
   'bar' => 'barfoo'
 ));
 
-$filtered = $hash->select(function($value, $key) {
+$filtered = $hash->select(function ($value, $key) {
     return $value !== 'barfoo';
 })->toArray();
 
@@ -242,11 +242,9 @@ $fifth  = new Hash(array('order' => 5));
 
 $hash   = new Hash(array($third, $fifth, $second, $first, $fourth));
 
-$sorted = $hash->sortBy(
-    function ($element) {
-        return $element['order'];
-    }
-)->toArray();
+$sorted = $hash->sortBy(function ($element) {
+    return $element['order'];
+})->toArray();
 
 // will return
 
