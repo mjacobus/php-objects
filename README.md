@@ -14,16 +14,33 @@ Well, not anymore. Hopefully.
 - [PO\Hash](docs/Hash.md) - There are tons of contribuitions you can make here
 - [PO\String](docs/String.md) - And here!
 
+## Installing
 
-## Lincense
-[MIT](MIT-LICENSE)
+### Installing via Composer
+Append the lib to your requirements key in your composer.json.
 
-## Authors
+```javascript
+{
+    // composer.json
+    // [..]
+    require: {
+        // append this line to your requirements
+        "php-objects/php-objects": "dev-master"
+    }
+}
+```
 
-- [Marcelo Jacobus](https://github.com/mjacobus)
+### Alternative install
+- Learn [composer](https://getcomposer.org). You should not be looking for an alternative install. It is worth the time. Trust me ;-)
+- Follow [this set of instructions](#installing-via-composer)
 
+## Issues/Features proposals
+
+[Here](https://github.com/mjacobus/php-objects/issues) is the issue tracker.
 
 ## Contributing
+
+Only TDD code will be accepted. Please follow the [PSR-2 code standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md).
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -31,11 +48,6 @@ Well, not anymore. Hopefully.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-**Do not forget to write tests**
-
-**Keep the code standard [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
-
-**Keep the code coverage [![Coverage Status](https://coveralls.io/repos/mjacobus/php-objects/badge.png)](https://coveralls.io/r/mjacobus/php-objects)**
 ### How to run the tests:
 
 ```bash
@@ -52,3 +64,10 @@ phpcs --standard=PSR2 tests
 
 ./bin/travis/run_phpcs.sh
 ```
+
+## Lincense
+[MIT](MIT-LICENSE)
+
+## Authors
+
+- [Marcelo Jacobus](https://github.com/mjacobus)
