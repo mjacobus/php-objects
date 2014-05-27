@@ -483,4 +483,28 @@ class HashSugarTest extends HashTest
         $this->assertFalse($hash->hasValue('a'));
         $this->assertFalse($hash->hasValue($baz));
     }
+
+    public function testInject()
+    {
+        $hash = new Hash(array(1, 2, 3, 4, 5));
+
+        $this->assertEquals(15, $hash->inject(0, function ($injected, $element) {
+            return $injected += $element;
+        }));
+
+        $this->assertEquals(16, $hash->inject(1, function ($injected, $element) {
+            return $injected += $element;
+        }));
+    }
+
+    public function testInjectWithNoInjectedValue()
+    {
+        $hash = new Hash(array('cat', 'sheep', 'bear'));
+
+        $longest = $hash->inject(function ($memo, $word) {
+            return (strlen($memo) > strlen($word)) ? $memo : $word;
+        });
+
+        $this->assertEquals('sheep', $longest);
+    }
 }

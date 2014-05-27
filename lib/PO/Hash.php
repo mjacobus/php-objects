@@ -447,6 +447,32 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     }
 
     /**
+     * TODO: Write some description
+     *
+     * @param mixed $memo callback or the memo. If no memo is given, it must be
+     *                          a callable function
+     * @param callable $callback the callback receives $injected as first param
+     *                           the element value as second param and the
+     *                           elemen key as the third param
+     *
+     * @return mixed
+     */
+    public function inject($memo = null, $callback = null)
+    {
+        if ($this->isCallable($callback)) {
+            foreach ($this as $key => $value) {
+                $memo = $callback($memo, $value, $key);
+            }
+        } elseif ($this->isCallable($memo)) {
+            return $this->inject(null, $memo);
+        } else {
+            throw new InvalidArgumentException('No callback was given');
+        }
+
+        return $memo;
+    }
+
+    /**
      * Get a function that returns something based on an element item
      *
      * @mixed $criteria either a callable function that returns a value or a
@@ -456,12 +482,22 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     private function factoryCallableCriteria($criteria)
     {
-        if (gettype($criteria) !== 'object') {
+        if (!$this->isCallable($criteria)) {
             $criteria = function ($element, $key) use ($criteria) {
                 return $element->fetch($criteria);
             };
         }
 
         return $criteria;
+    }
+
+    /**
+     * Param is function?
+     * @param mixed $callable
+     * @return boolean
+     */
+    protected function isCallable($callable)
+    {
+        return gettype($callable) === 'object';
     }
 }

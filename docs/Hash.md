@@ -136,7 +136,27 @@ $hash->hasKey('foo') // true
 - ```hasValue``` - Returns true if hash includes the given element
 - ```include```?
 - ```index```
-- ```inject```
+- ```inject``` - No good description here. TODO: Write some
+
+```php
+// Example 1
+$hash = new Hash(array(1, 2, 3, 4, 5));
+$sum = $hash->inject(0, function ($injected, $element) {
+    return $injected += $element;
+});
+
+// $sum === 15
+
+// Example 2
+$hash = new Hash(array('cat', 'sheep', 'bear'));
+
+$longest = $hash->inject(function ($memo, $word) {
+    return (strlen($memo) > strlen($word)) ? $memo : $word;
+});
+
+// $longest === 'sheep'
+```
+
 - ```invert```
 - ```isEmpty``` - Is empty?
 
