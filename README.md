@@ -4,6 +4,7 @@ Primitive types behaving like grown up objects. Compatible with PHP 5.3.3+
 
 [![Build Status](https://travis-ci.org/mjacobus/php-objects.png?branch=master)](https://travis-ci.org/mjacobus/php-objects)
 [![Coverage Status](https://coveralls.io/repos/mjacobus/php-objects/badge.png)](https://coveralls.io/r/mjacobus/php-objects)
+[![Code Climate](https://codeclimate.com/github/mjacobus/php-objects.png)](https://codeclimate.com/github/mjacobus/php-objects)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mjacobus/php-objects/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mjacobus/php-objects/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/php-objects/php-objects/v/stable.svg)](https://packagist.org/packages/php-objects/php-objects)
 [![Total Downloads](https://poser.pugx.org/php-objects/php-objects/downloads.svg)](https://packagist.org/packages/php-objects/php-objects)
