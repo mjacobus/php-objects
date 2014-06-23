@@ -407,10 +407,7 @@ class HashTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $groups->toArray());
     }
 
-    /**
-     * @covers PO\Hash::sortBy()
-     */
-    public function testSortByWithCallableObject()
+    protected function orderTest($order)
     {
         $first  = new Hash(array('order' => 1));
         $second = new Hash(array('order' => 2));
@@ -420,9 +417,7 @@ class HashTest extends \PHPUnit_Framework_TestCase
 
         $hash   = new Hash(array($third, $fifth, $second, $first, $fourth));
 
-        $sorted = $hash->sortBy(function ($element) {
-            return $element['order'];
-        });
+        $sorted = $hash->sortBy($order);
 
         $expected = array($first, $second, $third, $fourth, $fifth);
 
@@ -432,21 +427,19 @@ class HashTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers PO\Hash::sortBy()
      */
+    public function testSortByWithCallableObject()
+    {
+        $this->orderTest(function ($element) {
+            return $element['order'];
+        });
+    }
+
+    /**
+     * @covers PO\Hash::sortBy()
+     */
     public function testSortByWithStringParam()
     {
-        $first  = new Hash(array('order' => 1));
-        $second = new Hash(array('order' => 2));
-        $third  = new Hash(array('order' => 3));
-        $fourth = new Hash(array('order' => 3));
-        $fifth  = new Hash(array('order' => 5));
-
-        $hash = new Hash(array($third, $fifth, $second, $first, $fourth));
-
-        $sorted   = $hash->sortBy('order');
-
-        $expected = array($first, $second, $third, $fourth, $fifth);
-
-        $this->assertEquals($expected, $sorted->toArray(false));
+        $this->orderTest('order');
     }
 
     /**
