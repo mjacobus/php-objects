@@ -3,6 +3,7 @@
     "description": "Primitive types behaving like grown up objects",
     "homepage":"https://github.com/mjacobus/php-objects",
     "license": "MIT",
+    "version": "0.9.0",
     "authors": [
         {
             "name": "Marcelo Jacobus",
