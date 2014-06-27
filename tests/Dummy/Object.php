@@ -29,7 +29,6 @@ class Object extends \PO\Object
         return $string->toString();
     }
 
-
     protected function protectedMethod()
     {
 

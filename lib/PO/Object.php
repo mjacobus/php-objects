@@ -114,6 +114,7 @@ abstract class Object
     {
         $methods = get_class_methods($this);
         $hash = new Hash($methods);
+
         return $hash;
     }
 }

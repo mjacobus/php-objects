@@ -25,6 +25,7 @@ class String extends Object
     public function append($string)
     {
         $this->content .= $string;
+
         return $this;
     }
 
@@ -91,7 +92,7 @@ class String extends Object
      *
      * If param is not given, the considered string is the object itself.
      *
-     * @param string $string defaults to null
+     * @param  string $string defaults to null
      * @return bool
      */
     protected function isRegexp($string = null)
@@ -141,7 +142,7 @@ class String extends Object
      * Returns part of a string
      *
      * @param integer start
-     * @param integer $length the length of the string from the starting point
+     * @param  integer   $length the length of the string from the starting point
      * @return PO\String
      */
     public function at($start = null, $length = null)

@@ -16,7 +16,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     protected $values = array();
 
     /**
-     * @param array $values The values to initially set to the Hash
+     * @param array   $values    The values to initially set to the Hash
      * @param boolean $recursive Whether to recursively transform arrays into
      *                           Objects
      */
@@ -35,7 +35,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
 
     /**
      * Converts hash to array
-     * @param boolean $recursive defaults to true
+     * @param  boolean $recursive defaults to true
      * @return array
      */
     public function toArray($recursive = true)
@@ -95,6 +95,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     public function offsetUnset($key)
     {
         unset($this->values[$key]);
+
         return $this;
     }
 
@@ -128,6 +129,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     public function rewind()
     {
         reset($this->values);
+
         return $this;
     }
 
@@ -137,6 +139,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     public function valid()
     {
         $key = key($this->values);
+
         return ($key !== null && $key !== false);
     }
 
@@ -192,21 +195,22 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * A factory for Hash
      *
-     * @param array $params the params to create a new object
-     * @param boolean $recursive whether or not to recursive change arrays into
-     *                           objects
+     * @param  array   $params    the params to create a new object
+     * @param  boolean $recursive whether or not to recursive change arrays into
+     *                            objects
      * @return Hash
      */
     public static function create(array $params = array(), $recursive = true)
     {
         $class = get_called_class();
+
         return new $class($params, $recursive);
     }
 
     /**
      * Maps elements into a new Hash
      *
-     * @param function $callback
+     * @param  function $callback
      * @return Hash
      */
     public function map($callback)
@@ -223,7 +227,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * Loop the elements of the Hash
      *
-     * @param function $callable
+     * @param  function $callable
      * @return Hash
      */
     public function each($callable)
@@ -272,7 +276,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * Check object has given key
      *
-     * @param string $key
+     * @param  string $key
      * @return bool
      */
     public function hasKey($key)
@@ -283,22 +287,23 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * Gets teh index and removes it from the object
      *
-     * @param string $key
-     * @return mixed the element on the given index
+     * @param  string $key
+     * @return mixed  the element on the given index
      */
     public function delete($key)
     {
         $element = $this[$key];
         $this->offsetUnset($key);
+
         return $element;
     }
 
     /**
      * Get the value by the key. Throws exception when key is not set
      *
-     * @param string $key
-     * @param mixed $default either value or callable function
-     * @return mixed the value for the given key
+     * @param  string                   $key
+     * @param  mixed                    $default either value or callable function
+     * @return mixed                    the value for the given key
      * @throws InvalidArgumentException
      */
     public function fetch($key, $default = null)
@@ -318,6 +323,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
             if (is_callable($default)) {
                 return $default(null);
             }
+
             return $default;
         }
 
@@ -356,7 +362,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * Join the values of the object
      *
-     * @param string $separator defauts to empty string
+     * @param  string $separator defauts to empty string
      * @return string
      */
     public function join($separator = '')
@@ -371,6 +377,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     public function first()
     {
         $array = $this->toArray();
+
         return array_shift($array);
     }
 
@@ -381,14 +388,15 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     public function last()
     {
         $array = $this->toArray();
+
         return array_pop($array);
     }
 
     /**
      * Group elements by the given criteria
      *
-     * @param mixed $criteria it can be either a callable function or a string,
-     *      representing a key of an element
+     * @param  mixed $criteria it can be either a callable function or a string,
+     *                         representing a key of an element
      * @return Hash
      */
     public function groupBy($criteria)
@@ -409,8 +417,8 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * Sort elements by the given criteria
      *
-     * @param mixed $criteria it can be either a callable function or a string,
-     *      representing a key of an element
+     * @param  mixed $criteria it can be either a callable function or a string,
+     *                         representing a key of an element
      * @return Hash
      */
     public function sortBy($criteria)
@@ -449,8 +457,8 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
     /**
      * TODO: Write some description
      *
-     * @param mixed $memo callback or the memo. If no memo is given, it must be
-     *                          a callable function
+     * @param mixed    $memo     callback or the memo. If no memo is given, it must be
+     *                           a callable function
      * @param callable $callback the callback receives $injected as first param
      *                           the element value as second param and the
      *                           elemen key as the third param
@@ -493,7 +501,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
 
     /**
      * Param is function?
-     * @param mixed $callable
+     * @param  mixed   $callable
      * @return boolean
      */
     protected function isCallable($callable)

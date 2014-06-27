@@ -219,7 +219,6 @@ class HashTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $hash->count());
         $this->assertEquals(1, count($hash));
 
-
         unset($hash['foo']);
 
         $this->assertEquals(0, $hash->count());
@@ -293,7 +292,7 @@ class HashTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers PO\Hash::fetch()
      */
-    public function testFetchInjectsValueToCallableCallablefunction ()
+    public function testFetchInjectsValueToCallableCallablefunction()
     {
         $hash = Hash::create(array('foo' => 'bar'));
 
