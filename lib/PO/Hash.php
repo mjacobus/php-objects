@@ -3,11 +3,14 @@
 namespace PO;
 
 use InvalidArgumentException;
+use ArrayAccess;
+use Iterator;
+use Countable;
 
 /**
  * @author Marcelo Jacobus <marcelo.jacobus@gmail.com>
  */
-class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
+class Hash extends Object implements ArrayAccess, Iterator, Countable
 {
 
     /**
@@ -376,7 +379,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function first()
     {
-        $array = $this->toArray();
+        $array = $this->toArray(false);
 
         return array_shift($array);
     }
@@ -387,7 +390,7 @@ class Hash extends Object implements \ArrayAccess, \Iterator, \Countable
      */
     public function last()
     {
-        $array = $this->toArray();
+        $array = $this->toArray(false);
 
         return array_pop($array);
     }

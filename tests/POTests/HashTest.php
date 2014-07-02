@@ -349,8 +349,9 @@ class HashTest extends \PHPUnit_Framework_TestCase
      */
     public function testFirst()
     {
-        $hash = new Hash(array('a', 'b'));
-        $this->assertEquals('a', $hash->first());
+        $first = new Hash;
+        $hash = new Hash(array($first, 'b'));
+        $this->assertSame($first, $hash->first());
     }
 
     /**
@@ -358,8 +359,9 @@ class HashTest extends \PHPUnit_Framework_TestCase
      */
     public function testLast()
     {
-        $hash = new Hash(array('a', 'b'));
-        $this->assertEquals('b', $hash->last());
+        $last = new Hash;
+        $hash = new Hash(array('a', $last));
+        $this->assertEquals($last, $hash->last());
     }
 
     /**
