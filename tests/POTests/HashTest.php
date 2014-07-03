@@ -292,29 +292,16 @@ class HashTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers PO\Hash::fetch()
      */
-    public function testFetchInjectsValueToCallableCallablefunction()
+    public function testFetchAcceptsLambdaAsDefaultValue()
     {
         $hash = Hash::create(array('foo' => 'bar'));
 
-        $value = $hash->fetch('foo', function ($element) {
-            return "Value is '$element'";
-        });
+        $function = function ($key) {
+            return "default for '$key'";
+        };
 
-        $this->assertEquals("Value is 'bar'", $value);
-    }
-
-    /**
-     * @covers PO\Hash::fetch()
-     */
-    public function testFetchAcceptsCallableFunctionAsFallbackRotine()
-    {
-        $hash = Hash::create();
-
-        $value = $hash->fetch('foo', function ($element) {
-            return "Not set";
-        });
-
-        $this->assertEquals("Not set", $value);
+        $this->assertEquals("bar", $hash->fetch('foo', $function));
+        $this->assertEquals("default for 'k'", $hash->fetch('k', $function));
     }
 
     /**

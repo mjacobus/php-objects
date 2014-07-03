@@ -312,19 +312,11 @@ class Hash extends Object implements ArrayAccess, Iterator, Countable
     public function fetch($key, $default = null)
     {
         if ($this->hasKey($key)) {
-
-            $value = $this[$key];
-
-            if (is_callable($default)) {
-                return $default($value);
-            }
-
-            return $value;
-
+            return $this[$key];
         } elseif ($default !== null) {
 
             if (is_callable($default)) {
-                return $default(null);
+                return $default($key);
             }
 
             return $default;
